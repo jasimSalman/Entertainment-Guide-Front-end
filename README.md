@@ -45,16 +45,27 @@
 ![P;lace details page](images/Page_details.png)
 ![Sign up page](images/signup.png)
 
-##### ER Diagram
+##### ERD Diagram
 
-![ER](images/ERD.png)
+![ERD](images/ERD.png)
+
+##### Component Hierarchy Diagrams
+
+![ER](https://www12.0zz0.com/2024/06/10/21/829610027.png)
 
 ---
 
 ### **_Future Updates_**
 
 - [ ] Add more categories and features.
-- [ ] Add a map showing the locations of the places.
+- [ ] Add payment methods
+- [ ] Add Hotel reservations
+- [ ]Add Taxi reservations
+- [ ]Add More information about the tourist places
+
+  
+![image](https://github.com/jasimSalman/project3-React/assets/155457725/baba9598-98e6-45b4-9dc3-93b29bcf188c)
+
 
 ---
 
