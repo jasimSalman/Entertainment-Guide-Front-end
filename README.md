@@ -60,8 +60,8 @@
 - [ ] Add more categories and features.
 - [ ] Add payment methods
 - [ ] Add Hotel reservations
-- [ ]Add Taxi reservations
-- [ ]Add More information about the tourist places
+- [ ] Add Taxi reservations
+- [ ] Add More information about the tourist places
 
   
 ![image](https://github.com/jasimSalman/project3-React/assets/155457725/baba9598-98e6-45b4-9dc3-93b29bcf188c)
