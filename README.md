@@ -42,7 +42,11 @@
 ##### Wireframe
 
 ![Home page](images/Home.png)
-![P;lace details page](images/Page_details.png)
+![categories](https://www3.0zz0.com/2024/06/10/21/619339446.jpg)
+![places](https://www12.0zz0.com/2024/06/10/21/534558985.jpg)
+![Place details](images/Page_details.png)
+![booking](https://www3.0zz0.com/2024/06/10/21/173564153.jpg)
+![AddPlace](https://www9.0zz0.com/2024/06/10/21/596363121.jpg)
 ![Sign up page](images/signup.png)
 
 ##### ERD Diagram
@@ -62,9 +66,6 @@
 - [ ] Add Hotel reservations
 - [ ] Add Taxi reservations
 - [ ] Add More information about the tourist places
-
-  
-
 
 ---
 
