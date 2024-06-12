@@ -1,5 +1,5 @@
 import '../App.css'
-//import About from '../components/About'
+import About from '../components/About'
 
 const Home = () => {
 
@@ -10,8 +10,7 @@ const Home = () => {
 
   return (
     <div className="categories">
-      <h1>Home Page</h1>
-      
+      <About/>
     </div>
   )
 
