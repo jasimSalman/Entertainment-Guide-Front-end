@@ -1,8 +1,9 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Nav from './components/Nav'
-//import Categories from './components/Categories'
-//import About from './components/About'
+import Categories from './pages/Categories'
+import SignIn from './pages/SignIn'
+import Home from './pages/Home'
 
 
 function App() {
@@ -11,10 +12,16 @@ function App() {
     <header>
       <Nav/>
     </header>
-    
-    <Routes>
-      <Route path="/nav" element={<Nav />} />
+      <Routes>
+        <Route path="/nav" element={<Nav />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Home" element={<Home />} />
     </Routes>
+
+    <main>
+      
+    </main>
   </div>
   )
 }

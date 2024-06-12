@@ -8,7 +8,7 @@ const Categories = () => {
 
   return (
     <div className="categories">
-      <h1>wwww</h1>
+      <h1>Categories Page</h1>
     </div>
   )
 
