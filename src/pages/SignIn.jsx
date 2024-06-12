@@ -13,6 +13,7 @@ const SignIn = () => {
       <div className="form">
         <input type='text' placeholder='user name'/>
         <input type='password' placeholder='password'/>
+      <button type='submit'>Log in</button>
       </div>
       <p>you dont have account?</p>
       <Link to="/SignUp">Sign Up</Link>

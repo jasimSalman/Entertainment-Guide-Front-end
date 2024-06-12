@@ -1,4 +1,5 @@
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 const SignUp = () => {
 
@@ -8,14 +9,16 @@ const SignUp = () => {
 
   return (
     <div className="categories">
-      <h1>Log In</h1>
+      <h1>Sign Up</h1>
       <div className="form">
         <input type='text' placeholder='User Name'/>
         <input type='text' placeholder='Full Name'/>
         <input type='Email' placeholder='Email'/>
         <input type='password' placeholder='Password'/>
+        <button type='submit'>Log in</button>
       </div>
-      <p>you have account?</p>
+      <p>I have an account?</p>
+      <Link to="/SignIn">Sign In</Link>
 
     </div>
   )

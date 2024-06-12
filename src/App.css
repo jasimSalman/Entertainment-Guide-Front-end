@@ -1,5 +1,16 @@
+input{
+  margin: 5px;
+  border-radius: 5px;
+}
+
+button{
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+}
+
 main{
-  background-color: red;
+ 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +29,24 @@ main{
 .form{
   display: flex;
   flex-direction: column;
-  background-color: red;
+
   width: 350px;
+}
+
+
+
+
+.categCard{
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin: 10px;
+  background-image: url('https://leisurepools.eu/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg');
+  background-position: center;
+  background-size: 350px;
+
+}
+.pool{
+  background: red;
 }

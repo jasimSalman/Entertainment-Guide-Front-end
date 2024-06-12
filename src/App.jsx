@@ -5,6 +5,7 @@ import Categories from './pages/Categories'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Home from './pages/Home'
+import Places from './pages/Places'
 
 
 function App() {
@@ -15,11 +16,12 @@ function App() {
     </header>
     <main>
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/nav" element={<Nav />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/" element={<Home />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Places" element={<Places />} />
     </Routes>
 
     
