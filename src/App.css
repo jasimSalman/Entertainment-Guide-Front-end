@@ -1,3 +1,21 @@
+input{
+  margin: 5px;
+  border-radius: 5px;
+}
+
+button{
+  width: 80px;
+  height: 30px;
+  border-radius: 7px;
+}
+
+main{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar{
   width: 100%;
 
@@ -6,5 +24,29 @@
   display: flex;
   justify-content: space-between;
 
-  
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+
+  width: 350px;
+}
+
+
+
+
+.categCard{
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin: 10px;
+  background-image: url('https://leisurepools.eu/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg');
+  background-position: center;
+  background-size: 350px;
+
+}
+.pool{
+  background: red;
 }
