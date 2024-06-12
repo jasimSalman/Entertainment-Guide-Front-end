@@ -1,3 +1,10 @@
+main{
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .navbar{
   width: 100%;
 
@@ -6,7 +13,6 @@
   display: flex;
   justify-content: space-between;
 
-  
 }
 
 .form{
