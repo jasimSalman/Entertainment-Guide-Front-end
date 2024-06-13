@@ -11,7 +11,7 @@ const places = () => {
 
   return (
     <div className="places">
-      <h1>hhh</h1>
+      <h1>Im places page</h1>
     </div>
   )
 
