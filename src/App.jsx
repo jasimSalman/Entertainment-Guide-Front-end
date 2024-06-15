@@ -9,6 +9,7 @@ import Places from "./pages/Places"
 import PlaceDetail from "./pages/PlaceDetail"
 import AddPlace from "./pages/AddPlace"
 import MyPlaces from "./pages/MyPlaces"
+import Bookings from "./pages/Bookings"
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="places/:placeId" element={<PlaceDetail />} />
           <Route path="/addPlace" element={<AddPlace />} />
           <Route path="/myPlaces" element={<MyPlaces />} />
+          <Route path="/Bookings" element={<Bookings />} />
+          
         </Routes>
       </main>
     </div>
