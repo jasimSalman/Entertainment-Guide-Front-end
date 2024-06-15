@@ -1,3 +1,6 @@
+body{
+  background-color: rgb(213, 213, 213);
+}
 input{
   margin: 5px;
   border-radius: 5px;
@@ -18,12 +21,15 @@ main{
 
 .navbar{
   width: 100%;
-
   color: green;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
+}
 
+.navbar a:hover{
+  background-color: rgb(111, 111, 111);
+  border-radius: 7px;
 }
 
 .form{
@@ -34,19 +40,53 @@ main{
 }
 
 
+.categories2{
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
 
 
 .categCard{
   width: 300px;
   height: 200px;
-  border: 1px solid black;
+  border: 3px solid rgb(0, 0, 0);
   border-radius: 7px;
   margin: 10px;
   background-image: url('https://leisurepools.eu/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg');
   background-position: center;
   background-size: 350px;
-
 }
+.categCard:hover .categCard2{
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.31);
+  position: absolute;}
+
+
+  .placeCard{
+  width: 300px;
+  height: 200px;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 7px;
+  margin: 10px;
+  background-image: url('https://leisurepools.eu/wp-content/uploads/2020/06/best-type-of-swimming-pool-for-my-home_2.jpg');
+  background-position: center;
+  background-size: 350px;
+  }
+
 .pool{
   background: red;
+}
+
+.placeCard{
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+a{
+  color: black;
+  text-decoration: none;
 }
