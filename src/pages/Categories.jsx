@@ -22,14 +22,18 @@ const Categories = () => {
 
   return (
     <div className="categories">
-      {categories.map((Category) => (
-        <CategoryCard
-          key={Category._id}
-          id={Category._id}
-          name={Category.categoryName}
-          poster={Category.categoryPoster}
-        />
-      ))}
+      <h1>Categories</h1>
+      <div className="categories2">
+        {categories.map((Category) => (
+          <CategoryCard
+            key={Category._id}
+            id={Category._id}
+            name={Category.categoryName}
+            poster={Category.categoryPoster}
+          />
+        ))}
+
+      </div>
     </div>
   )
 }
