@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
@@ -50,7 +50,6 @@ function App() {
           <Route path="/addPlace" element={<AddPlace />} />
           <Route path="/myPlaces" element={<MyPlaces />} />
           <Route path="/Bookings" element={<Bookings />} />
-
         </Routes>
       </main>
     </div>

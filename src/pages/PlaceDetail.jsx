@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import PlaceDetailsCard from "../components/PlaceDetailsCard"
+import FavList from "../components/FavList"
 import Review from "../components/Review"
 
 const placeDetails = () => {
@@ -42,6 +43,7 @@ const placeDetails = () => {
         placeId={placeId}
       />
       <Review reviews={reviews} placeId={placeId} />
+      <FavList placeId={placeId} />
     </div>
   ) : null
 }

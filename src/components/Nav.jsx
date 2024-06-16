@@ -1,5 +1,5 @@
-import '../App.css'
-import { Link } from 'react-router-dom'
+import "../App.css"
+import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -22,9 +22,9 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/categories">categories</Link>
       {user ? (
         <div>
-          <Link>My list</Link>
+          <Link to="/FavList">My list</Link>
           <Link onClick={handleLogOut} to="/">
-            ign out
+            Sign out
           </Link>
         </div>
       ) : (
