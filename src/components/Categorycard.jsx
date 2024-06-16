@@ -1,12 +1,12 @@
-import "../App.css"
-import { Link } from "react-router-dom"
+import '../App.css'
+import { Link } from 'react-router-dom'
 
-const CategoryCard = (props) => {
+const CategoryCard = ({ name, poster, id }) => {
   return (
-    <Link to={`places/${props.id}`}>
-      <div className="categCard" id={props.id}>
-        <h3>{props.name}</h3>
-        <img src={props.categoryPoster} />
+    <Link to={`places/${id}`}>
+      <div className="categCard" id={id}>
+        <h3>{name}</h3>
+        <img src={poster} />
       </div>
     </Link>
   )

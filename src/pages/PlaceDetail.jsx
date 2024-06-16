@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import axios from "axios"
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
+import PlaceDetailsCard from '../components/PlaceDetailsCard'
+import Review from '../components/Review'
 
-const GameDetails = () => {
+const placeDetails = () => {
   const [PlaceDetails, setPlaceDetails] = useState({})
+  const [reviews, setReviews] = useState([])
+  console.log(`Reviews  ${reviews}`)
 
   let { placeId } = useParams()
 
@@ -15,28 +19,31 @@ const GameDetails = () => {
       setPlaceDetails(response.data)
     }
 
+    const GetReviews = async () => {
+      const res = await axios.get(
+        `http://localhost:3001/places/${placeId}/reviews`
+      )
+      console.log(res.data)
+      setReviews(res.data)
+    }
     GetPlaceDetails()
+    GetReviews()
   }, [placeId])
 
   return PlaceDetails ? (
     <div>
-      <div>
-        <img src={PlaceDetails.placePoster} width="100px" height="100px" />
-      </div>
-      <div>
-        <h2> place name :{PlaceDetails.placeName}</h2>
-      </div>
-      <div>
-        <h2> place price :{PlaceDetails.placePrice}</h2>
-      </div>
-      <div>
-        <p> place Description :{PlaceDetails.placeDescription}</p>
-      </div>
-      <div>
-        <h2>place Location :{PlaceDetails.placeLocation}</h2>
-      </div>
+      <PlaceDetailsCard
+        placePoster={PlaceDetails.placePoster}
+        placeName={PlaceDetails.placeName}
+        placePrice={PlaceDetails.placePrice}
+        placeDescription={PlaceDetails.placeDescription}
+        placeLocation={PlaceDetails.placeLocation}
+        reviews={reviews}
+        placeId={placeId}
+      />
+      <Review reviews={reviews} placeId={placeId} />
     </div>
   ) : null
 }
 
-export default GameDetails
+export default placeDetails

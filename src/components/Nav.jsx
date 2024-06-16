@@ -1,5 +1,5 @@
-import "../App.css"
-import { Link } from "react-router-dom"
+import '../App.css'
+import { Link } from 'react-router-dom'
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -16,10 +16,20 @@ const Nav = ({ user, handleLogOut }) => {
 
   return (
     <div className="navbar">
-      <Link to="/">Home</Link>
+      <Link to="/">
+        <img src="" alt="logo" />
+      </Link>
       <Link to="/categories">categories</Link>
-      <Link to="/signIn">sign in</Link>
-      <Link to="/Register">sign Uup</Link>
+      {user ? (
+        <div>
+          <Link>My list</Link>
+          <Link onClick={handleLogOut} to="/">
+            ign out
+          </Link>
+        </div>
+      ) : (
+        <Link to="/signin">sign in</Link>
+      )}
     </div>
   )
 }
