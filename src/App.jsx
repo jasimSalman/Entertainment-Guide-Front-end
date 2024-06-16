@@ -10,6 +10,7 @@ import PlaceDetail from "./pages/PlaceDetail"
 import AddPlace from "./pages/AddPlace"
 import MyPlaces from "./pages/MyPlaces"
 import Bookings from "./pages/Bookings"
+import UserFavList from "./pages/UserFavList"
 import { useEffect, useState } from "react"
 import { CheckSession } from "./services/Auth"
 
@@ -50,6 +51,10 @@ function App() {
           <Route path="/addPlace" element={<AddPlace />} />
           <Route path="/myPlaces" element={<MyPlaces />} />
           <Route path="/Bookings" element={<Bookings />} />
+          <Route
+            path="/list/show/:userId"
+            element={<UserFavList user={user} />}
+          />
         </Routes>
       </main>
     </div>
