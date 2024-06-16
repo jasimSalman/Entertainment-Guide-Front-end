@@ -23,6 +23,7 @@ const Nav = ({ user, handleLogOut }) => {
       {user ? (
         <div>
           <Link>My list</Link>
+          <Link to="/MyPlaces">My Places</Link>
           <Link onClick={handleLogOut} to="/">
             ign out
           </Link>
@@ -30,9 +31,8 @@ const Nav = ({ user, handleLogOut }) => {
       ) : (
         <Link to="/signin">sign in</Link>
       )}
-      {/* <Link to="/AddPlace">add place</Link>
-      <Link to="/MyPlaces">My Places</Link>
-      <Link to="/Bookings">Bookings</Link> */}
+      {/* <Link to="/AddPlace">add place</Link> */}
+      {/* <Link to="/Bookings">Bookings</Link> */}
     </div>
   )
 }
