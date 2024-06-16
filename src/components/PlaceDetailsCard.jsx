@@ -3,7 +3,7 @@ const PlaceDetailsCard = ({
   placeName,
   placePrice,
   placeDescription,
-  placeLocation
+  placeLocation,
 }) => {
   return (
     <div>
