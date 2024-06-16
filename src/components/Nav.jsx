@@ -1,11 +1,18 @@
-import '../App.css'
-import { Link } from 'react-router-dom'
+import "../App.css"
+import { Link } from "react-router-dom"
 
-
-const Nav = () => {
-
-
-
+const Nav = ({ user, handleLogOut }) => {
+  let userOptions
+  if (user) {
+    userOptions = (
+      <nav>
+        <h3>Welcome {user.email}!</h3>
+        <Link onClick={handleLogOut} to="/">
+          Sign Out
+        </Link>
+      </nav>
+    )
+  }
 
   return (
     <div className="navbar">
@@ -15,11 +22,8 @@ const Nav = () => {
       <Link to="/MyPlaces">My Places</Link>
       <Link to="/Bookings">Bookings</Link>
       <Link to="/signIn">sign in</Link>
-      
-      
     </div>
   )
-
 }
 
 export default Nav
