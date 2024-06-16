@@ -27,7 +27,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
