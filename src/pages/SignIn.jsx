@@ -1,11 +1,12 @@
-import { useState } from "react"
-import { SignInUser } from "../services/Auth"
-import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+import { SignInUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const [formValues, setFormValues] = useState({ username: "", password: "" })
+  const [formValues, setFormValues] = useState({ username: '', password: '' })
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -14,9 +15,9 @@ const SignIn = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ username: "", password: "" })
+    setFormValues({ username: '', password: '' })
     setUser(payload)
-    navigate("/categories")
+    navigate('/categories')
   }
 
   return (
@@ -48,6 +49,13 @@ const SignIn = ({ setUser }) => {
             Sign In
           </button>
         </form>
+
+        <div>
+          <h4>Don't have an accout?</h4>
+          <Link to="/register">
+            <button>Register</button>
+          </Link>
+        </div>
       </div>
     </div>
   )

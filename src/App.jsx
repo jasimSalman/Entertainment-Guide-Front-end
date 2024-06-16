@@ -20,12 +20,14 @@ function App() {
     setUser(null)
     localStorage.clear()
   }
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
   }
+
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
@@ -36,19 +38,19 @@ function App() {
       <header>
         <Nav user={user} handleLogOut={handleLogOut} />
       </header>
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/nav" element={<Nav />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/SignIn" element={<SignIn setUser={setUser} />} />
+          <Route path="/Signin" element={<SignIn setUser={setUser} />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="categories/places/:id" element={<Places />} />
-          <Route path="places/:placeId" element={<PlaceDetail />} />
+          <Route path="/categories/places/:id" element={<Places />} />
+          <Route path="/places/:placeId" element={<PlaceDetail />} />
           <Route path="/addPlace" element={<AddPlace />} />
           <Route path="/myPlaces" element={<MyPlaces />} />
           <Route path="/Bookings" element={<Bookings />} />
-          
+
         </Routes>
       </main>
     </div>
