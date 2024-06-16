@@ -30,9 +30,9 @@ const Nav = ({ user, handleLogOut }) => {
       ) : (
         <Link to="/signin">sign in</Link>
       )}
-//       <Link to="/AddPlace">add place</Link>
-//       <Link to="/MyPlaces">My Places</Link>
-//       <Link to="/Bookings">Bookings</Link>
+      {/* <Link to="/AddPlace">add place</Link>
+      <Link to="/MyPlaces">My Places</Link>
+      <Link to="/Bookings">Bookings</Link> */}
     </div>
   )
 }
