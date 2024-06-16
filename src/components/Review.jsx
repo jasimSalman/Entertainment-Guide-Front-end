@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { review: '', rate: '' }
+  const initialState = { review: "", rate: "" }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("")
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
   }, [])
 

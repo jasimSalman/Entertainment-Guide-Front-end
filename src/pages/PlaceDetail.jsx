@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
-import PlaceDetailsCard from '../components/PlaceDetailsCard'
-import Review from '../components/Review'
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import axios from "axios"
+import PlaceDetailsCard from "../components/PlaceDetailsCard"
+import Review from "../components/Review"
 
 const placeDetails = () => {
   const [PlaceDetails, setPlaceDetails] = useState({})
   const [reviews, setReviews] = useState([])
-  console.log(`Reviews  ${reviews}`)
+  // console.log(`Reviews  ${reviews}`)
 
   let { placeId } = useParams()
 
