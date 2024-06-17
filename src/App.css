@@ -83,18 +83,14 @@ button {
   justify-content: center;
   align-items: center;
 }
+
 .about{
   max-width: 500px;
 }
 
-/*======= Categories Page =======*/
-.categories2 {
-  display: flex;
-  border-bottom: 1px solid black;
-}
+/*======= cards =======*/
 
-
-.categCard{
+.Card{
   background-color: gray;
   width: 300px;
   height: 200px;
@@ -107,19 +103,13 @@ button {
   place-content: end;
 }
 
-.categCard img {
+.Card img {
   width: 300px;
   height: 200px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 7px;
 }
 
-.categCard:hover .categCard2 {
-  width: 300px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.31);
-  position: absolute;
-}
 .card-title{
   background-color:rgba(128, 128, 128, 0.551);
   position: absolute;
@@ -129,7 +119,28 @@ button {
 }
 
 
+
+.Card:hover .card-Cover {
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.31);
+  position: absolute;
+}
+
+/*======= categories Page =======*/
+.categories2 {
+  display: flex;
+  border-bottom: 1px solid black;
+}
 /*=======places Page=======*/
+.places{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .placeCard {
   width: 300px;
   height: 200px;

@@ -24,7 +24,7 @@ const Places = () => {
   }, [id])
 
   return (
-    <div className="placess">
+    <div className="places">
       {placess.map((place) => (
         <PlaceCard
           key={place._id}
