@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const [formValues, setFormValues] = useState({ username: '', password: '' })
+  const initialState = { username: '', password: '' }
+  const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -15,7 +16,7 @@ const SignIn = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
-    setFormValues({ username: '', password: '' })
+    setFormValues(initialState)
     setUser(payload)
     navigate('/categories')
   }

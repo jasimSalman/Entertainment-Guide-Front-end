@@ -1,8 +1,8 @@
-import "../App.css"
-import PlaceCard from "../components/PlaceCard"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { useParams } from "react-router-dom"
+// import '../App.css'
+import PlaceCard from '../components/PlaceCard'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 const Places = () => {
   const [placess, setPlaces] = useState([])
@@ -16,9 +16,8 @@ const Places = () => {
         )
 
         setPlaces(res.data.place)
-        console.log(res.data.place)
       } catch (err) {
-        console.log("Error fetching places:", err)
+        console.log('Error fetching places:', err)
       }
     }
     getPlaces(id)

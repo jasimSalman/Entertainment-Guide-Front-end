@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import BookingCard from '../components/BookingCard'
 
-const Bookings = ({ userId }) => {
+const Bookings = () => {
   const [bookings, setBookings] = useState([])
+
+  const userId = localStorage.getItem('userId')
 
   useEffect(() => {
     const getBookings = async () => {
       try {
-        const res = await Client.get(`http://localhost:3001/book/${userId}`)
-        console.log(res.data)
+        const res = await Client.get(`/book/${userId}`)
         setBookings(res.data)
       } catch (err) {
         console.log('Error fetching bookingd:', err)

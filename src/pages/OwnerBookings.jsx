@@ -1,16 +1,15 @@
-import '../App.css'
 import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import BookingCard from '../components/BookingCard'
 
-const OwnerBookings = ({ userId }) => {
+const OwnerBookings = () => {
   const [bookings, setBookings] = useState([])
 
+  const userId = localStorage.getItem('userId')
   useEffect(() => {
     const getBookings = async () => {
       try {
-        const res = await Client.get(`/book/${userId}`)
-        console.log(res.data)
+        const res = await Client.get(`/book/all/${userId}`)
         setBookings(res.data)
       } catch (err) {
         console.log('Error fetching bookingd:', err)
@@ -22,14 +21,18 @@ const OwnerBookings = ({ userId }) => {
   return (
     <div className="Bookings">
       <ul>
-        {bookings.map((book) => (
-          <BookingCard
-            name={book.place.placeName}
-            start={book.start}
-            end={book.end}
-            key={book.id}
-          />
-        ))}
+        {bookings.length > 0 ? (
+          bookings.map((book) => (
+            <BookingCard
+              name={book.place.placeName}
+              start={book.start}
+              end={book.end}
+              key={book.id}
+            />
+          ))
+        ) : (
+          <h4>There is no bookings yet</h4>
+        )}
       </ul>
     </div>
   )
