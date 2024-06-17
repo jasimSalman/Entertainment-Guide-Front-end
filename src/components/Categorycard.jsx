@@ -6,8 +6,8 @@ const CategoryCard = ({ name, poster, id }) => {
     <Link to={`places/${id}`}>
       <div className="categCard" id={id} key={id}>
         <div className="categCard2" />
-        <h3>{name}</h3>
         <img src={poster} alt={name} />
+        <h3 className='card-title'>{name}</h3>
       </div>
     </Link>
   )

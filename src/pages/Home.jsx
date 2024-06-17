@@ -3,7 +3,7 @@ import About from '../components/About'
 
 const Home = () => {
   return (
-    <div className="categories">
+    <div className="home">
       <About />
     </div>
   )
