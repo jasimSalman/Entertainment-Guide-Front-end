@@ -1,17 +1,17 @@
-import '../App.css'
+// import '../App.css'
 import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import PlaceCard from '../components/PlaceCard'
 
-const MyPlaces = ({ userId }) => {
+const MyPlaces = () => {
   const [places, setPlaces] = useState([])
+
+  const userId = localStorage.getItem('userId')
 
   useEffect(() => {
     const getPlaces = async () => {
       try {
-        const res = await Client.get(
-          `http://localhost:3001/places/all/${userId}`
-        )
+        const res = await Client.get(`/places/all/${userId}`)
         setPlaces(res.data)
       } catch (err) {
         console.log('Error fetching places:', err)

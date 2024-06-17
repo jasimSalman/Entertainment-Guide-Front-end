@@ -1,15 +1,18 @@
-import { useEffect, useState } from "react"
-import Client from "../services/api"
+import { useEffect, useState } from 'react'
+import Client from '../services/api'
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { review: "", rate: "" }
+  const initialState = { review: '', rate: '' }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState('')
+  const [userType, setUserType] = useState('')
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
+    const storedUserId = localStorage.getItem('userId')
     if (storedUserId) setUserId(storedUserId)
+    const storedUserType = localStorage.getItem('userType')
+    if (storedUserType) setUserType(storedUserType)
   }, [])
 
   const handleChange = (e) => {
@@ -19,9 +22,7 @@ const Review = ({ reviews, placeId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.post(`/places/${placeId}/reviews/${userId}`, formValues)
-    console.log(
-      `Axios post query ==> http://localhost:3001/places/${placeId}/reviews/${userId}`
-    )
+
     setFormValues(initialState)
   }
 
@@ -41,31 +42,33 @@ const Review = ({ reviews, placeId }) => {
           <h3>No Reviews</h3>
         )}
       </div>
-      {userId && (
-        <div>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="review">Review</label>
-            <input
-              type="text"
-              name="review"
-              className="review"
-              value={formValues.review}
-              onChange={handleChange}
-            />
+      {userId
+        ? userType === 'user' && (
+            <div>
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="review">Review</label>
+                <input
+                  type="text"
+                  name="review"
+                  className="review"
+                  value={formValues.review}
+                  onChange={handleChange}
+                />
 
-            <label htmlFor="rate">Rating</label>
-            <input
-              type="text"
-              name="rate"
-              className="rate"
-              value={formValues.rate}
-              onChange={handleChange}
-            />
+                <label htmlFor="rate">Rating</label>
+                <input
+                  type="text"
+                  name="rate"
+                  className="rate"
+                  value={formValues.rate}
+                  onChange={handleChange}
+                />
 
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      )}
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          )
+        : null}
     </div>
   )
 }

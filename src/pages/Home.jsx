@@ -1,5 +1,5 @@
-import "../App.css"
-import About from "../components/About"
+// import "../App.css"
+import About from '../components/About'
 
 const Home = () => {
   return (

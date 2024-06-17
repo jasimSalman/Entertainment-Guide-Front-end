@@ -1,12 +1,11 @@
-import "../App.css"
-import { useEffect, useState } from "react"
-import Client from "../services/api"
+import { useEffect, useState } from 'react'
+import Client from '../services/api'
 
 const FavList = ({ placeId }) => {
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState('')
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
+    const storedUserId = localStorage.getItem('userId')
     if (storedUserId) setUserId(storedUserId)
   }, [])
 
