@@ -22,8 +22,8 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/categories">categories</Link>
       {user ? (
         <div>
+          <Link to={`/list/show/${user.id}`}>My list</Link>
           <Link to="/MyPlaces">My Places</Link>
-          <Link to="/FavList">My list</Link>
           <Link onClick={handleLogOut} to="/">
             Sign out
           </Link>
