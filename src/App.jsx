@@ -14,6 +14,7 @@ import UserFavList from "./pages/UserFavList"
 import { useEffect, useState } from "react"
 import { CheckSession } from "./services/Auth"
 
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -48,8 +49,11 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/categories/places/:id" element={<Places />} />
           <Route path="/places/:placeId" element={<PlaceDetail />} />
+          <Route
+            path="/myPlaces"
+            element={<MyPlaces userId={user && user.id} />}
+          />
           <Route path="/addPlace" element={<AddPlace />} />
-          <Route path="/myPlaces" element={<MyPlaces />} />
           <Route path="/Bookings" element={<Bookings />} />
           <Route
             path="/list/show/:userId"
