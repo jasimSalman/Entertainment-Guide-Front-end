@@ -1,9 +1,33 @@
 body {
   background-color: rgb(213, 213, 213);
+  background-image: url('https://img.freepik.com/free-photo/grungy-gray-marble-textured-background_53876-108405.jpg');
+  background-size: 200vh;
+  background-repeat: no-repeat;
 }
+
 input {
+  background-color: rgb(203, 202, 202);
+  margin-left: 5px;
+  border: 0px solid black ;
+  border-left: 1px solid black ;  
+  height: 20px;
+  width: 75%;
+  border-radius: 0px 5px 5px 0px;
+}
+.confirm-password{
+  width: 63%;
+}
+
+.input-wrapper{
+  background-color: #fff;
   margin: 5px;
+  border: 1px solid #000;
   border-radius: 5px;
+  padding-left: 5px;
+  height: flex;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
 }
 
 button {
@@ -29,6 +53,14 @@ main {
 .navbar a:hover {
   background-color: rgb(111, 111, 111);
   border-radius: 7px;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .form {

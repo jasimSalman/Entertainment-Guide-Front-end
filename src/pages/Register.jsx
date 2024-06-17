@@ -96,6 +96,7 @@ const Register = () => {
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               onChange={handleChange}
+              className="confirm-password"
               type="password"
               name="confirmPassword"
               value={formValues.confirmPassword}
