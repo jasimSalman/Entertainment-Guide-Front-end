@@ -1,19 +1,20 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import Nav from './components/Nav'
-import Categories from './pages/Categories'
-import SignIn from './pages/SignIn'
-import Register from './pages/Register'
-import Home from './pages/Home'
-import Places from './pages/Places'
-import PlaceDetail from './pages/PlaceDetail'
-import AddPlace from './pages/AddPlace'
-import MyPlaces from './pages/MyPlaces'
-import Bookings from './pages/Bookings'
-import UserFavList from './pages/UserFavList'
-import { useEffect, useState } from 'react'
-import { CheckSession } from './services/Auth'
-import OwnerBookings from './pages/OwnerBookings'
+import "./App.css"
+import { Route, Routes } from "react-router-dom"
+import Nav from "./components/Nav"
+import Categories from "./pages/Categories"
+import SignIn from "./pages/SignIn"
+import Register from "./pages/Register"
+import Home from "./pages/Home"
+import Places from "./pages/Places"
+import PlaceDetail from "./pages/PlaceDetail"
+import AddPlace from "./pages/AddPlace"
+import MyPlaces from "./pages/MyPlaces"
+import Bookings from "./pages/Bookings"
+import UserFavList from "./pages/UserFavList"
+import EditPlace from "./pages/EditPlace"
+import { useEffect, useState } from "react"
+import { CheckSession } from "./services/Auth"
+import OwnerBookings from "./pages/OwnerBookings"
 
 function App() {
   const [user, setUser] = useState(null)
@@ -29,7 +30,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
@@ -70,6 +71,7 @@ function App() {
             path="/list/show/:userId"
             element={<UserFavList user={user} />}
           />
+          <Route path="/myPlaces/edit/:placeId" element={<EditPlace />} />
         </Routes>
       </main>
     </div>
