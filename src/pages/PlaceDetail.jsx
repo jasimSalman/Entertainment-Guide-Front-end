@@ -38,7 +38,7 @@ const placeDetails = () => {
   }, [placeId])
 
   return PlaceDetails ? (
-    <div>
+    <div className='place-details'>
       <PlaceDetailsCard
         placePoster={PlaceDetails.placePoster}
         placeName={PlaceDetails.placeName}
