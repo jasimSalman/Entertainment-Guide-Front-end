@@ -131,7 +131,9 @@ button {
 /*======= categories Page =======*/
 .categories2 {
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid black;
+  justify-content: center;
 }
 /*=======places Page=======*/
 .places{
