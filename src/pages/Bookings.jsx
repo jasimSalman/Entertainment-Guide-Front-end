@@ -23,14 +23,18 @@ const Bookings = () => {
   return (
     <div className="Bookings">
       <ul>
-        {bookings.map((book) => (
-          <BookingCard
-            name={book.place.placeName}
-            start={book.start}
-            end={book.end}
-            key={book.id}
-          />
-        ))}
+        {bookings.length > 0 ? (
+          bookings.map((book) => (
+            <BookingCard
+              name={book.place.placeName}
+              start={book.start}
+              end={book.end}
+              key={book.id}
+            />
+          ))
+        ) : (
+          <h4>You have No Booking</h4>
+        )}
       </ul>
     </div>
   )

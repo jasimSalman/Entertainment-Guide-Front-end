@@ -28,14 +28,18 @@ const UserFavList = () => {
   return (
     <div className="placess">
       <div className="places">
-        {userList.map((place) => (
-          <FavListCard
-            key={place._id}
-            id={place._id}
-            name={place.placeName}
-            poster={place.placePoster}
-          />
-        ))}
+        {userList.length > 0 ? (
+          userList.map((place) => (
+            <FavListCard
+              key={place._id}
+              id={place._id}
+              name={place.placeName}
+              poster={place.placePoster}
+            />
+          ))
+        ) : (
+          <h4>No Places in Your Faviorite List</h4>
+        )}
       </div>
     </div>
   )

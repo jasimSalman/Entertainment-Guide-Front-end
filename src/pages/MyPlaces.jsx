@@ -22,14 +22,18 @@ const MyPlaces = () => {
     <div className="myPlaces">
       <h1>My Places</h1>
       <ul>
-        {places.map((place) => (
-          <OwnerPlace
-            key={place._id}
-            poster={place.placePoster}
-            name={place.placeName}
-            id={place._id}
-          />
-        ))}
+        {places.length > 0 ? (
+          places.map((place) => (
+            <OwnerPlace
+              key={place._id}
+              poster={place.placePoster}
+              name={place.placeName}
+              id={place._id}
+            />
+          ))
+        ) : (
+          <h4>You have No Places</h4>
+        )}
       </ul>
     </div>
   )
