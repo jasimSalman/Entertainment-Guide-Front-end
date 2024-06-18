@@ -1,12 +1,11 @@
 import { useState } from "react"
-import { SignInUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { updatePassword } from "../services/Auth"
 
-const SignIn = ({ setUser }) => {
+const UpdatePassword = () => {
   let navigate = useNavigate()
 
-  const initialState = { username: "", password: "" }
+  const initialState = { email: "", password: "" }
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
@@ -15,10 +14,10 @@ const SignIn = ({ setUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(formValues)
+    const payload = await updatePassword(formValues)
     setFormValues(initialState)
     setUser(payload)
-    navigate("/categories")
+    navigate("/Signin")
   }
 
   return (
@@ -26,13 +25,13 @@ const SignIn = ({ setUser }) => {
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="username">username</label>
+            <label htmlFor="email">Email</label>
             <input
               onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="username"
-              value={formValues.username}
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={formValues.email}
               required
             />
           </div>
@@ -42,30 +41,18 @@ const SignIn = ({ setUser }) => {
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="Password"
               value={formValues.password}
               required
             />
           </div>
-          <button disabled={!formValues.username || !formValues.password}>
-            Sign In
+          <button disabled={!formValues.email || !formValues.password}>
+            Update Password
           </button>
         </form>
-        <div>
-          <div>
-            <Link to="/updatePassword">
-              <h4>Forget your password?</h4>
-            </Link>
-          </div>
-          <div>
-            <h4>Don't have an accout?</h4>
-            <Link to="/register">
-              <button>Register</button>
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   )
 }
 
-export default SignIn
+export default UpdatePassword
