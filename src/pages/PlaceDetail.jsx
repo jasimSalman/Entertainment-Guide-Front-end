@@ -51,7 +51,7 @@ const placeDetails = () => {
   }, [placeId])
 
   return PlaceDetails ? (
-    <div className='place-details'>
+    <div className="place-details">
       <PlaceDetailsCard
         placePoster={PlaceDetails.placePoster}
         placeName={PlaceDetails.placeName}
@@ -59,7 +59,9 @@ const placeDetails = () => {
         placeDescription={PlaceDetails.placeDescription}
         placeLocation={PlaceDetails.placeLocation}
       />
-      {userId && <button onClick={deletePlace}>Delete Place</button>}
+      {userId == PlaceDetails.owner && (
+        <button onClick={deletePlace}>Delete Place</button>
+      )}
 
       <Review reviews={reviews} placeId={placeId} />
       <FavList placeId={placeId} />
