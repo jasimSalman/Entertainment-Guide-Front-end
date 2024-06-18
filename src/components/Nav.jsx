@@ -1,5 +1,5 @@
-import '../App.css'
-import { Link } from 'react-router-dom'
+import "../App.css"
+import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
   // let userOptions
@@ -19,19 +19,20 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/">
         <img src="" alt="logo" />
       </Link>
-
       <Link to="/categories">categories</Link>
-
       {user ? (
         <div>
           <Link to={`/list/show/${user.id}`}>My list</Link>
-          {user.type === 'owner' ? (
-            <Link to={`/booking/all/${user.id}`}>All Booking</Link>
+          {user.type === "owner" ? (
+            <>
+              <Link to={`/booking/all/${user.id}`}>All Booking</Link>
+              <Link to={`/addPlace`}>Add Place</Link>
+            </>
           ) : (
             <Link to={`/booking/${user.id}`}>Bookings</Link>
           )}
 
-          {user.type === 'owner' && <Link to="/MyPlaces">My Places</Link>}
+          {user.type === "owner" && <Link to="/MyPlaces">My Places</Link>}
           <Link onClick={handleLogOut} to="/">
             Sign out
           </Link>
