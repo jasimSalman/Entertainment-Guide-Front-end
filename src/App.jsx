@@ -12,6 +12,7 @@ import MyPlaces from "./pages/MyPlaces"
 import Bookings from "./pages/Bookings"
 import UserFavList from "./pages/UserFavList"
 import EditPlace from "./pages/EditPlace"
+import UpdatePassword from "./pages/UpdatePassword"
 import { useEffect, useState } from "react"
 import { CheckSession } from "./services/Auth"
 import OwnerBookings from "./pages/OwnerBookings"
@@ -72,6 +73,7 @@ function App() {
             element={<UserFavList user={user} />}
           />
           <Route path="/myPlaces/edit/:placeId" element={<EditPlace />} />
+          <Route path="/updatePassword" element={<UpdatePassword />} />
         </Routes>
       </main>
     </div>
