@@ -1,4 +1,3 @@
-// import '../App.css'
 import PlaceCard from '../components/PlaceCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
