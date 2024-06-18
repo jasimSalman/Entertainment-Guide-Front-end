@@ -18,6 +18,7 @@ const PlaceDetailsCard = ({
           <h2> place price :{placePrice}</h2>
         </div>
       </div>
+      
       <div className="mid-section">
         <div>
           <p> place Description :{placeDescription}</p>
