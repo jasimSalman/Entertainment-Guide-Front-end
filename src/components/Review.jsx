@@ -24,6 +24,7 @@ const Review = ({ reviews, placeId }) => {
     await Client.post(`/places/${placeId}/reviews/${userId}`, formValues)
     setFormValues(initialState)
   }
+
   const handleDelete = async (reviewId) => {
     try {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
@@ -41,11 +42,6 @@ const Review = ({ reviews, placeId }) => {
               <li key={review._id}>
                 <p>Review: {review.review}</p>
                 <p>Rating: {review.reviewRating}</p>
-                {userId === review.user && (
-                  <button onClick={() => handleDelete(review._id)}>
-                    Delete
-                  </button>
-                )}
               </li>
             ))}
           </ul>

@@ -1,7 +1,8 @@
-import PlaceCard from '../components/PlaceCard'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import PlaceCard from "../components/PlaceCard"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
+import Search from "../components/Search"
 
 const Places = () => {
   const [placess, setPlaces] = useState([])
@@ -16,7 +17,7 @@ const Places = () => {
 
         setPlaces(res.data.place)
       } catch (err) {
-        console.log('Error fetching places:', err)
+        console.log("Error fetching places:", err)
       }
     }
     getPlaces(id)
@@ -24,6 +25,8 @@ const Places = () => {
 
   return (
     <div className="places">
+      <Search />
+
       {placess.map((place) => (
         <PlaceCard
           key={place._id}

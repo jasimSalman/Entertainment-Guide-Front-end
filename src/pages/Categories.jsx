@@ -2,6 +2,7 @@
 import CategoryCard from "../components/Categorycard"
 import { useEffect, useState } from "react"
 import axios from "axios"
+import Search from "../components/Search"
 
 const Categories = () => {
   const [categories, setCategories] = useState([])
@@ -21,6 +22,7 @@ const Categories = () => {
 
   return (
     <div className="categories">
+      <Search />
       <h1>Categories</h1>
       <div className="categories2">
         {categories.map((Category) => (

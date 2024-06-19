@@ -1,5 +1,4 @@
-// import '../App.css'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 const OwnerPlace = ({
   id,
@@ -8,7 +7,7 @@ const OwnerPlace = ({
   price,
   description,
   location,
-  key
+  key,
 }) => {
   return (
     <div className="Owner-Card" id={id} key={key}>
