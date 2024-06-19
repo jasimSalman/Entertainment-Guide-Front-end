@@ -55,7 +55,7 @@ form {
   width: 350px;
 }
 
-input {
+input, select, textarea{
   background-color: rgb(203, 202, 202);
   margin-left: 5px;
   border: 0px solid black ;
@@ -63,11 +63,18 @@ input {
   height: 20px;
   width: 63%;
   border-radius: 0px 5px 5px 0px;
+
+}
+
+textarea{
+  height: 40px;
 }
 
 label{
+  display: flex;
   width: 37%;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
