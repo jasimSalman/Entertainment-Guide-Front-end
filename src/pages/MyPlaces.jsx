@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
-import OwnerPlace from '../components/OwnerPlace'
+import { useState, useEffect } from "react"
+import Client from "../services/api"
+import OwnerPlace from "../components/OwnerPlace"
 const MyPlaces = () => {
   const [places, setPlaces] = useState([])
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId")
 
   useEffect(() => {
     const getPlaces = async () => {
@@ -12,7 +12,7 @@ const MyPlaces = () => {
         const res = await Client.get(`/places/all/${userId}`)
         setPlaces(res.data)
       } catch (err) {
-        console.log('Error fetching places:', err)
+        console.log("Error fetching places:", err)
       }
     }
     getPlaces()
@@ -28,6 +28,9 @@ const MyPlaces = () => {
               key={place._id}
               poster={place.placePoster}
               name={place.placeName}
+              price={place.placePrice}
+              description={place.placeDescription}
+              location={place.placeLocation}
               id={place._id}
             />
           ))

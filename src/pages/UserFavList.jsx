@@ -1,29 +1,44 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import FavListCard from '../components/FavListCard'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import axios from "axios"
+import FavListCard from "../components/FavListCard"
+import { useParams } from "react-router-dom"
+import Client from "../services/api"
+import { useNavigate } from "react-router-dom"
 
 const UserFavList = () => {
   const [userList, setUserList] = useState([])
-  const { userId } = useParams()
+  const userId = localStorage.getItem("userId")
+  let { placeId } = useParams()
+  let navigate = useNavigate()
 
   const getUserList = async () => {
     try {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token")
       const res = await axios.get(`http://localhost:3001/list/show/${userId}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
       setUserList(res.data)
     } catch (err) {
-      console.log('Error fetching places:', err)
+      console.log("Error fetching places:", err)
     }
   }
 
   useEffect(() => {
     getUserList()
   }, [])
+
+  const handleSubmit = async () => {
+    const response = await Client.delete(`list/delete/${placeId}/${userId}`)
+    if (response.status === 200 || response.status === 204) {
+      console.log("Place deleted successfully")
+      navigate(`/list/show/${userId}`)
+      console.log(`/list/show/${userId}`)
+    } else {
+      console.error("Failed to delete place:", response.status)
+    }
+  }
 
   return (
     <div className="placess">
@@ -35,6 +50,7 @@ const UserFavList = () => {
               id={place._id}
               name={place.placeName}
               poster={place.placePoster}
+              handleSubmit={handleSubmit}
             />
           ))
         ) : (

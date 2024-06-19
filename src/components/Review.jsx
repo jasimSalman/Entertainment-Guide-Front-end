@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { review: '', rate: '' }
+  const initialState = { review: "", rate: "" }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState('')
-  const [userType, setUserType] = useState('')
+  const [userId, setUserId] = useState("")
+  const [userType, setUserType] = useState("")
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
-    const storedUserType = localStorage.getItem('userType')
+    const storedUserType = localStorage.getItem("userType")
     if (storedUserType) setUserType(storedUserType)
   }, [])
 
@@ -22,8 +22,15 @@ const Review = ({ reviews, placeId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.post(`/places/${placeId}/reviews/${userId}`, formValues)
-
     setFormValues(initialState)
+  }
+  const handleDelete = async (reviewId) => {
+    try {
+      await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
+      setReviews(reviews.filter((review) => review._id !== reviewId))
+    } catch (error) {
+      console.error("Failed to delete review:", error)
+    }
   }
 
   return (
@@ -35,6 +42,11 @@ const Review = ({ reviews, placeId }) => {
               <li key={review._id}>
                 <p>Review: {review.review}</p>
                 <p>Rating: {review.reviewRating}</p>
+                {userId === review.user && (
+                  <button onClick={() => handleDelete(review._id)}>
+                    Delete
+                  </button>
+                )}
               </li>
             ))}
           </ul>
@@ -43,7 +55,7 @@ const Review = ({ reviews, placeId }) => {
         )}
       </div>
       {userId
-        ? userType === 'user' && (
+        ? userType === "user" && (
             <div>
               <form onSubmit={handleSubmit}>
                 <label htmlFor="review">Review</label>
