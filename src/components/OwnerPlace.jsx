@@ -11,19 +11,21 @@ const OwnerPlace = ({
   key
 }) => {
   return (
-    <div className="Owner-Card" id={id} key={key}>
-      <Link to={`/places/${id}`} className='Owner-Card'>
-        <div className="card-Cover" />
-        <img src={poster} width="100px" height="100px" />
-        <h3 className="my-title">{name}</h3>
-      </Link>
+    <div className="List-Card" id={id} key={key}>
+      <Link to={`/places/${id}`} className='List-Card2'>
+      <div className="card-Cover" />
+        <div className='list-card-left'>
+          <img src={poster} width="100px" height="100px" />
+          <h3 className="list-card-title">{name}</h3>
+        </div>
       <Link
         to={{
           pathname: `/myPlaces/edit/${id}`,
           state: { id, name, poster, price, description, location }
         }}
       >
-        <button>Edit Place Deatil</button>
+        <button className='card-list-btn'>Edit</button>
+      </Link>
       </Link>
     </div>
   )
