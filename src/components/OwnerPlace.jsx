@@ -1,7 +1,14 @@
-// import '../App.css'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-const OwnerPlace = ({ id, name, poster, price, description, location }) => {
+const OwnerPlace = ({
+  id,
+  name,
+  poster,
+  price,
+  description,
+  location,
+  key,
+}) => {
   return (
     <div className="Card" id={id} key={key}>
       <Link to={`/places/${id}`}>

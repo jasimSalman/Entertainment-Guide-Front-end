@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { RegisterUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
-
+import { useParams } from "react-router-dom"
 
 const Register = () => {
   let navigate = useNavigate()
@@ -31,7 +31,7 @@ const Register = () => {
       lastName: formValues.lastName,
       email: formValues.email,
       password: formValues.password,
-      type: type
+      type: type,
     })
     setFormValues(initValues)
 
