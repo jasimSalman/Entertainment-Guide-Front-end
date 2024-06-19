@@ -29,7 +29,6 @@ const AddPlace = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.post(`/places/new/${userId}`, formValues)
-    console.log('Form submitted:', formValues)
     setFormValues(initialState)
     navigate('/myPlaces')
   }

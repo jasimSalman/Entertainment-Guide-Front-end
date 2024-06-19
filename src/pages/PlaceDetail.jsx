@@ -14,14 +14,11 @@ const placeDetails = () => {
   const userId = localStorage.getItem('userId')
 
   let { placeId } = useParams()
-  console.log(`Place Id ${placeId}`)
-  console.log(`User Id ${userId}`)
 
   const deletePlace = async () => {
     try {
       const response = await Client.delete(`/places/${placeId}/${userId}`)
       if (response.status === 200 || response.status === 204) {
-        console.log('Place deleted successfully')
         navigate('/myPlaces')
       } else {
         console.error('Failed to delete place:', response.status)
