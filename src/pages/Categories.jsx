@@ -25,6 +25,7 @@ const Categories = () => {
       <div className="categories2">
         {categories.map((Category) => (
           <CategoryCard
+            key={Category._id}
             id={Category._id}
             name={Category.categoryName}
             poster={Category.categoryPoster}
