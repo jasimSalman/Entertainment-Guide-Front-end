@@ -179,6 +179,36 @@ button {
   justify-content: space-between;
 }
 
+.Favbutton{
+  position: absolute;
+  margin-top: 30px;
+  margin-left: 10px;
+
+}
+
+.Favbutton i{
+  cursor: pointer;
+}
+
+.Favbutton i:hover{
+  cursor: pointer;
+  color: maroon
+}
+
+.myPlaces{
+  background-color: red;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Owner-Card{
+  width: 100%;
+  background-color: blue;
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+}
 
 
 /*

@@ -9,6 +9,7 @@ const PlaceDetailsCard = ({
     <div>
       <div className="img-container">
         <img src={placePoster} width="100px" height="100px" />
+        
       </div>
 
       <div className="bellow-section">  
