@@ -27,7 +27,6 @@ const Review = ({ reviews, placeId }) => {
   const handleDelete = async (reviewId) => {
     try {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
-      // Optionally, update the local state to remove the deleted review from the list
       setReviews(reviews.filter((review) => review._id !== reviewId))
     } catch (error) {
       console.error("Failed to delete review:", error)
