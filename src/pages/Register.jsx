@@ -1,7 +1,6 @@
-import { useState } from "react"
-import { RegisterUser } from "../services/Auth"
-import { useNavigate } from "react-router-dom"
-
+import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { RegisterUser } from '../services/Auth'
 
 const Register = () => {
   let navigate = useNavigate()
@@ -9,12 +8,12 @@ const Register = () => {
   const { type } = useParams()
 
   const initValues = {
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   }
 
   const [formValues, setFormValues] = useState(initValues)
@@ -35,7 +34,7 @@ const Register = () => {
     })
     setFormValues(initValues)
 
-    navigate("/signin")
+    navigate('/signin')
   }
 
   return (

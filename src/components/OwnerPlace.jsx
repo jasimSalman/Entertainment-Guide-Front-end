@@ -1,7 +1,15 @@
 // import '../App.css'
 import { Link } from 'react-router-dom'
 
-const OwnerPlace = ({ id, name, poster, price, description, location }) => {
+const OwnerPlace = ({
+  id,
+  name,
+  poster,
+  price,
+  description,
+  location,
+  key
+}) => {
   return (
     <div className="Card" id={id} key={key}>
       <Link to={`/places/${id}`}>
@@ -12,7 +20,7 @@ const OwnerPlace = ({ id, name, poster, price, description, location }) => {
       <Link
         to={{
           pathname: `/myPlaces/edit/${id}`,
-          state: { id, name, poster, price, description, location },
+          state: { id, name, poster, price, description, location }
         }}
       >
         <button>Edit Place Deatil</button>
