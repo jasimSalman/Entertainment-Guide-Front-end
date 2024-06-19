@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import { RegisterUser } from '../services/Auth'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react"
+import { RegisterUser } from "../services/Auth"
+import { useNavigate } from "react-router-dom"
 
 const Register = () => {
   let navigate = useNavigate()
 
   const initValues = {
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   }
 
   const [formValues, setFormValues] = useState(initValues)
@@ -27,11 +27,11 @@ const Register = () => {
       firstName: formValues.firstName,
       lastName: formValues.lastName,
       email: formValues.email,
-      password: formValues.password
+      password: formValues.password,
     })
     setFormValues(initValues)
 
-    navigate('/signin')
+    navigate("/signin")
   }
 
   return (
