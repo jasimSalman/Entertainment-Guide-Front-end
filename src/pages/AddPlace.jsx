@@ -102,16 +102,6 @@ const AddPlace = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="placeDescription">Place Description</label>
-            <textarea
-              onChange={handleChange}
-              name="placeDescription"
-              placeholder="Place Description"
-              value={formValues.placeDescription}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
             <label htmlFor="placeLocation">Place Location</label>
             <input
               onChange={handleChange}
@@ -122,6 +112,17 @@ const AddPlace = () => {
               required
             />
           </div>
+          <div className="input-wrapper">
+            <label htmlFor="placeDescription">Place Description</label>
+            <textarea
+              onChange={handleChange}
+              name="placeDescription"
+              placeholder="Place Description"
+              value={formValues.placeDescription}
+              required
+            />
+          </div>
+          
           <button
             disabled={
               !formValues.placeName ||
