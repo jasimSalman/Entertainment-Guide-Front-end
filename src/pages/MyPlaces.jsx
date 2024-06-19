@@ -18,7 +18,6 @@ const MyPlaces = () => {
     getPlaces()
   }, [userId])
 
-  console.log(places)
   return (
     <div className="myPlaces">
       <h1>My Places</h1>
