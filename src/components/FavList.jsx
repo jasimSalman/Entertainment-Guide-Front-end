@@ -17,7 +17,10 @@ const FavList = ({ placeId }) => {
   return (
     <div className="Favbutton">
       {userId ? (
-        <button onClick={handleSubmit}>Add to my fav list</button>
+      <div onClick={handleSubmit} >
+        <i class="material-symbols-outlined">
+        favorite</i>
+      </div>
       ) : (
         <p>Please log in to add to favorites.</p>
       )}

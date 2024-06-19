@@ -57,7 +57,7 @@ const placeDetails = () => {
         placeLocation={PlaceDetails.placeLocation}
       />
       {userId == PlaceDetails.owner && (
-        <button onClick={deletePlace}>Delete Place</button>
+        <button onClick={deletePlace}>Delete</button>
       )}
 
       <Review reviews={reviews} placeId={placeId} />
