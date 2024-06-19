@@ -5,8 +5,8 @@ import PlaceDetailsCard from '../components/PlaceDetailsCard'
 import FavList from '../components/FavList'
 import Review from '../components/Review'
 import Client from '../services/api'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+//import DatePicker from 'react-datepicker'
+//import 'react-datepicker/dist/react-datepicker.css'
 
 const placeDetails = () => {
   let navigate = useNavigate()
