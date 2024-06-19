@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { SignInUser } from "../services/Auth"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { useState } from 'react'
+import { SignInUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const initialState = { username: "", password: "" }
+  const initialState = { username: '', password: '' }
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
@@ -18,7 +18,7 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
-    navigate("/categories")
+    navigate('/categories')
   }
 
   return (
@@ -58,8 +58,14 @@ const SignIn = ({ setUser }) => {
           </div>
           <div>
             <h4>Don't have an accout?</h4>
-            <Link to="/register">
-              <button>Register</button>
+            <Link to="/register/user">
+              <button>Register as A user </button>
+            </Link>
+
+            <span>Or</span>
+
+            <Link to="/register/owner">
+              <button>Register as an Owner </button>
             </Link>
           </div>
         </div>

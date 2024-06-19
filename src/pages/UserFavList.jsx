@@ -54,7 +54,7 @@ const UserFavList = () => {
             />
           ))
         ) : (
-          <h4>No Places in Your Faviorite List</h4>
+          <h4>No Places in Your Favorite List</h4>
         )}
       </div>
     </div>

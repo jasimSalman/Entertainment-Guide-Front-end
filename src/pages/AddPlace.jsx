@@ -29,7 +29,6 @@ const AddPlace = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await Client.post(`/places/new/${userId}`, formValues)
-    console.log('Form submitted:', formValues)
     setFormValues(initialState)
     navigate('/myPlaces')
   }
@@ -102,16 +101,6 @@ const AddPlace = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="placeDescription">Place Description</label>
-            <textarea
-              onChange={handleChange}
-              name="placeDescription"
-              placeholder="Place Description"
-              value={formValues.placeDescription}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
             <label htmlFor="placeLocation">Place Location</label>
             <input
               onChange={handleChange}
@@ -122,6 +111,17 @@ const AddPlace = () => {
               required
             />
           </div>
+          <div className="input-wrapper">
+            <label htmlFor="placeDescription">Place Description</label>
+            <textarea
+              onChange={handleChange}
+              name="placeDescription"
+              placeholder="Place Description"
+              value={formValues.placeDescription}
+              required
+            />
+          </div>
+          
           <button
             disabled={
               !formValues.placeName ||

@@ -1,11 +1,11 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { updatePassword } from "../services/Auth"
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { updatePassword } from '../services/Auth'
 
 const UpdatePassword = () => {
   let navigate = useNavigate()
 
-  const initialState = { email: "", password: "" }
+  const initialState = { username: '', newPassword: '', confirmPassword: '' }
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
@@ -14,39 +14,60 @@ const UpdatePassword = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await updatePassword(formValues)
+
+    const payload = {
+      username: formValues.username,
+      newPassword: formValues.newPassword
+    }
+    await updatePassword(payload)
     setFormValues(initialState)
-    setUser(payload)
-    navigate("/Signin")
+    navigate('/Signin')
   }
 
   return (
-    <div className="signin col">
+    <div className="update-password col">
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
               onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="Email"
-              value={formValues.email}
+              name="username"
+              type="text"
+              placeholder="Username"
+              value={formValues.username}
               required
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="newPassword">New Password</label>
             <input
               onChange={handleChange}
+              name="newPassword"
               type="password"
-              name="password"
-              placeholder="Password"
-              value={formValues.password}
+              placeholder="New Password"
+              value={formValues.newPassword}
               required
             />
           </div>
-          <button disabled={!formValues.email || !formValues.password}>
+          <div className="input-wrapper">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              onChange={handleChange}
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formValues.confirmPassword}
+              required
+            />
+          </div>
+          <button
+            disabled={
+              !formValues.username ||
+              !formValues.newPassword ||
+              !formValues.confirmPassword
+            }
+          >
             Update Password
           </button>
         </form>

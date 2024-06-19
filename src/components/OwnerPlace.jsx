@@ -1,9 +1,9 @@
 // import '../App.css'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const OwnerPlace = ({ id, name, poster, price, description, location }) => {
   return (
-    <div className="Card" id={id}>
+    <div className="Card" id={id} key={key}>
       <Link to={`/places/${id}`}>
         <div className="card-Cover" />
         <img src={poster} width="100px" height="100px" />
