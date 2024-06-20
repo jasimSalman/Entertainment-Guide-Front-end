@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Client from "../services/api"
 import OwnerPlace from "../components/OwnerPlace"
 import { Link } from "react-router-dom"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 const MyPlaces = () => {
   const [places, setPlaces] = useState([])
