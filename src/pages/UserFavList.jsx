@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import FavListCard from '../components/FavListCard'
 import { useParams } from 'react-router-dom'
 import Client from '../services/api'
@@ -29,7 +28,6 @@ const UserFavList = () => {
     if (response.status === 200 || response.status === 204) {
       console.log('Place deleted successfully')
       navigate(`/list/show/${userId}`)
-      console.log(`/list/show/${userId}`)
     } else {
       console.error('Failed to delete place:', response.status)
     }
