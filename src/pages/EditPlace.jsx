@@ -2,6 +2,7 @@ import "../App.css"
 import { useState, useEffect } from "react"
 import Client from "../services/api"
 import { useParams } from "react-router-dom"
+import axios from "axios"
 
 const EditPlace = () => {
   const initialState = {
@@ -14,13 +15,39 @@ const EditPlace = () => {
   const [formValues, setFormValues] = useState(initialState)
   const { placeId } = useParams()
 
+  useEffect(() => {
+    const fetchPlaceDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/places/${placeId}`
+        )
+        const place = response.data
+        setFormValues({
+          placeName: place.placeName,
+          placePoster: place.placePoster,
+          placePrice: place.placePrice,
+          placeDescription: place.placeDescription,
+          placeLocation: place.placeLocation,
+        })
+      } catch (error) {
+        console.error("Error fetching place details:", error)
+      }
+    }
+    fetchPlaceDetails()
+  }, [placeId])
+
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Client.put(`/places/${placeId}`, formValues)
-    setFormValues(initialState)
+    try {
+      await Client.put(`/places/${placeId}`, formValues)
+      setFormValues(initialState)
+    } catch (error) {
+      console.error("Error updating place:", error)
+    }
   }
 
   return (
