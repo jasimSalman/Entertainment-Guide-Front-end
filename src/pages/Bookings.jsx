@@ -1,4 +1,3 @@
-import '../App.css'
 import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import BookingCard from '../components/BookingCard'
@@ -29,7 +28,7 @@ const Bookings = () => {
               name={book.place.placeName}
               start={book.start}
               end={book.end}
-              key={book.id}
+              key={book._id}
             />
           ))
         ) : (

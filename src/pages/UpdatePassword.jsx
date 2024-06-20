@@ -65,7 +65,8 @@ const UpdatePassword = () => {
             disabled={
               !formValues.username ||
               !formValues.newPassword ||
-              !formValues.confirmPassword
+              !formValues.confirmPassword ||
+              formValues.newPassword !== formValues.confirmPassword
             }
           >
             Update Password
