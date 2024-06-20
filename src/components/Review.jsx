@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { reviewText: '', rate: '', userId: '' }
+  const initialState = { reviewText: "", rate: "", userId: "" }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState('')
-  const [userType, setUserType] = useState('')
+  const [userId, setUserId] = useState("")
+  const [userType, setUserType] = useState("")
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
-    const storedUserType = localStorage.getItem('userType')
+    const storedUserType = localStorage.getItem("userType")
     if (storedUserType) setUserType(storedUserType)
   }, [])
 
@@ -29,30 +29,16 @@ const Review = ({ reviews, placeId }) => {
     try {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
     } catch (error) {
-      console.error('Failed to delete review:', error)
+      console.error("Failed to delete review:", error)
     }
   }
 
   return (
-    <div>
-      <div>
-        {reviews ? (
-          <ul>
-            {reviews.map((review) => (
-              <li key={review._id}>
-                <p>Review: {review.review}</p>
-                <p>Rating: {review.reviewRating}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <h3>No Reviews</h3>
-        )}
-      </div>
+    <div className="reviewForm">
       {userId
-        ? userType === 'user' && (
-            <div>
-              <form onSubmit={handleSubmit}>
+        ? userType === "user" && (
+            <div className="reviewInput">
+              <form onSubmit={handleSubmit} className="rForm">
                 <label htmlFor="review">Review</label>
                 <input
                   type="text"
@@ -64,18 +50,34 @@ const Review = ({ reviews, placeId }) => {
 
                 <label htmlFor="rate">Rating</label>
                 <input
-                  type="text"
+                  type="number"
                   name="rate"
                   className="rate"
                   value={formValues.rate}
                   onChange={handleChange}
                 />
 
-                <button type="submit">Submit</button>
+                <button type="submit" className="revButton">
+                  Submit
+                </button>
               </form>
             </div>
           )
         : null}
+      <div>
+        {reviews ? (
+          <div>
+            {reviews.map((review) => (
+              <div key={review._id} className="showReview">
+                <p>Review: {review.review}</p>
+                <p>Rating: {review.reviewRating}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <h3>No Reviews</h3>
+        )}
+      </div>
     </div>
   )
 }

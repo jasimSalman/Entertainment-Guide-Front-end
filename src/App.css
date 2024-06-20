@@ -1,6 +1,7 @@
 body {
   background-color: white;
   margin: 0;
+  padding: 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
@@ -94,6 +95,39 @@ button {
   cursor: pointer;
 }
 
+.reviewForm {
+  align-items: center;
+  background-color: #c5c5c440;
+  width: 300px;
+  margin: 20px;
+  padding: 5px;
+  border-radius: 7px;
+}
+.rForm {
+  width: 200px;
+  padding: 10px 30px 10px 30px;
+}
+.reviewInput input,
+select,
+textarea {
+  background-color: rgb(203, 202, 202);
+  margin-left: 5px;
+  border: 0px solid black;
+  height: 20px;
+  width: 100%;
+  border-radius: 0px 2px 2px 0px;
+}
+.revButton {
+  margin-top: 3px;
+}
+.showReview {
+  background-color: #c5c5c440;
+  border-radius: 3px;
+  text-align: center;
+  width: 250px;
+  margin-left: 25px;
+}
+
 /*======= Home Page =======*/
 .home {
   display: flex;
@@ -167,28 +201,28 @@ button {
 }
 
 /*=======details Page=======*/
-.place-details {
+.placeDetail {
   display: flex;
-  flex-direction: column;
-  width: 400px;
+  flex-direction: row;
+  margin: 4px;
 }
 
-.img-container {
-  margin-top: 20px;
-  width: 100%;
-  border: 3px solid black;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.placePoster img {
+  margin: 4px;
+  max-width: 400px;
   display: flex;
+  border-radius: 3px;
 }
 
 .title {
   height: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+.info {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -198,14 +232,18 @@ button {
   margin-left: 10px;
 }
 
-.Favbutton i {
-  cursor: pointer;
-}
-
 .Favbutton i:hover {
   cursor: pointer;
   color: maroon;
 }
+.placeDescription {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+/* .booking {
+  margin-top: 60px;
+} */
+
 /*=======My Place=======*/
 .myPlaces {
   width: 500px;
