@@ -16,14 +16,21 @@ a {
   color: black;
   text-decoration: none;
 }
+ul{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 /*=======Nav=======*/
 .navbar {
   width: 100%;
+  height: 30px;
   color: green;
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navbar a:hover {
@@ -126,8 +133,6 @@ button {
   text-align: center;
 }
 
-
-
 .Card:hover .card-Cover {
   width: 300px;
   height: 200px;
@@ -194,22 +199,89 @@ button {
   cursor: pointer;
   color: maroon
 }
-
+/*=======My Place=======*/
 .myPlaces{
-  background-color: red;
-  width: 100%;
+  width: 500px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.Owner-Card{
+.show-add{
+  border: 3px solid black;
+  padding: 5px;
+}
+/*=======cards list=======*/
+.List-Card{
   width: 100%;
-  background-color: blue;
-  margin: 5px;
+  background-color: rgb(203, 202, 202);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.List-Card2{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+.list-card-title{
+  margin: 10px;
 }
 
+.List-Card:hover .card-Cover {
+  width: 500px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.31);
+  position: absolute;
+}
+.list-card-left{
+  display: flex;
+  width: 80%;
+  align-items: center;
+
+}
+.List-Card img{
+  border-right: 2px solid black;
+  border-radius: 5px;
+}
+
+
+/*=======main photo=======*/
+.main-photo{
+  display: flex;
+  width: 600px;
+  height: 220px;
+  overflow-y: hidden;
+  align-items: center;
+  justify-content: center;
+  
+  backdrop-filter: blur(10px);
+  animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
+  
+}
+
+@keyframes backgroundChange {
+  0%,
+  100% {
+    background-color: rgb(174, 174, 174);
+  }
+  50% {
+    background-color: rgb(75, 75, 75);
+  }
+}
+
+.main-photo img{
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  height: 180px;
+  width: 200px;
+}
 
 /*
 .placeCard {
@@ -229,3 +301,7 @@ button {
   margin: 10px;
 }
 */
+
+.card-list-btn{
+  z-index: 2;
+}

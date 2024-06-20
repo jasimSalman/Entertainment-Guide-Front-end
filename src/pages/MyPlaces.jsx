@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import OwnerPlace from '../components/OwnerPlace'
+import { Link } from "react-router-dom"
 const MyPlaces = () => {
   const [places, setPlaces] = useState([])
 
@@ -21,6 +22,7 @@ const MyPlaces = () => {
   return (
     <div className="myPlaces">
       <h1>My Places</h1>
+      <Link to={`/addPlace`} className='show-add'>Add Place</Link>
       <ul>
         {places.length > 0 ? (
           places.map((place) => (

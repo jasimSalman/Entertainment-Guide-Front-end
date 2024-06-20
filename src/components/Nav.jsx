@@ -18,7 +18,6 @@ const Nav = ({ user, handleLogOut }) => {
           {user.type === 'owner' ? (
             <>
               <Link to={`/booking/all/${user.id}`}>All Booking</Link>
-              <Link to={`/addPlace`}>Add Place</Link>
             </>
           ) : (
             <Link to={`/booking/${user.id}`}>Bookings</Link>
