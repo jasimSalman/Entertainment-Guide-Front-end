@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios'
-import PlaceDetailsCard from '../components/PlaceDetailsCard'
-import FavList from '../components/FavList'
-import Review from '../components/Review'
-import Client from '../services/api'
-//import DatePicker from 'react-datepicker'
-//import 'react-datepicker/dist/react-datepicker.css'
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import axios from "axios"
+import PlaceDetailsCard from "../components/PlaceDetailsCard"
+import FavList from "../components/FavList"
+import Review from "../components/Review"
+import Client from "../services/api"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 const PlaceDetails = () => {
   let navigate = useNavigate()
@@ -16,30 +16,30 @@ const PlaceDetails = () => {
   const [bookings, setBookings] = useState([])
   const [date, setDate] = useState(new Date())
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId")
   let { placeId } = useParams()
 
   //This function is use for deleting a place
-  const deletePlace = async () => {
-    try {
-      const response = await Client.delete(`/places/${placeId}/${userId}`)
-      if (response.status === 200 || response.status === 204) {
-        navigate('/myPlaces')
-      } else {
-        console.error('Failed to delete place:', response.status)
-      }
-    } catch (error) {
-      console.error('Failed to delete place:', error)
-    }
-  }
+  // const deletePlace = async () => {
+  //   try {
+  //     const response = await Client.delete(`/places/${placeId}/${userId}`)
+  //     if (response.status === 200 || response.status === 204) {
+  //       navigate("/myPlaces")
+  //     } else {
+  //       console.error("Failed to delete place:", response.status)
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to delete place:", error)
+  //   }
+  // }
 
   //This function will return all the bookings of all the users.
   const allBookings = async () => {
     try {
-      const res = await Client.get('/book/all-bookings')
+      const res = await Client.get("/book/all-bookings")
       setBookings(res.data)
     } catch (e) {
-      console.error('Failed to fetch bookings:', e)
+      console.error("Failed to fetch bookings:", e)
     }
   }
 
@@ -48,11 +48,11 @@ const PlaceDetails = () => {
     try {
       const bookingDate = date.toISOString()
       const res = await Client.post(`/book/${placeId}/create/${userId}`, {
-        date: bookingDate
+        date: bookingDate,
       })
       navigate(`/booking/${userId}`)
     } catch (e) {
-      console.error('Failed to create booking:', e)
+      console.error("Failed to create booking:", e)
     }
   }
 
@@ -103,9 +103,9 @@ const PlaceDetails = () => {
         placeDescription={PlaceDetails.placeDescription}
         placeLocation={PlaceDetails.placeLocation}
       />
-      {userId == PlaceDetails.owner && (
+      {/* {userId == PlaceDetails.owner && (
         <button onClick={deletePlace}>Delete</button>
-      )}
+      )} */}
 
       <Review reviews={reviews} placeId={placeId} />
       {userId && (
@@ -127,7 +127,6 @@ const PlaceDetails = () => {
           </div>
         </div>
       )}
-
     </div>
   ) : null
 }
