@@ -3,29 +3,42 @@ import { RegisterUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 
-
 const Register = () => {
   let navigate = useNavigate()
 
   const { type } = useParams()
 
   const initValues = {
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   }
 
   const [formValues, setFormValues] = useState(initValues)
+  const [password, setPassword] = useState("")
+  const [matchPassword, setMatchPassword] = useState("")
+  const [validPass, setValidPass] = useState(false)
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setFormValues({ ...formValues, [name]: value })
+    if (name === "password") {
+      setPassword(value)
+    } else if (name === "confirmPassword") {
+      setMatchPassword(value)
+    }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (password !== matchPassword) {
+      setValidPass(false)
+      return
+    }
+    setValidPass(true)
     await RegisterUser({
       username: formValues.username,
       firstName: formValues.firstName,
@@ -35,8 +48,7 @@ const Register = () => {
       type: type,
     })
     setFormValues(initValues)
-
-    navigate('/signin')
+    navigate("/signin")
   }
 
   return (
@@ -107,11 +119,19 @@ const Register = () => {
               required
             />
           </div>
+          {/* {!validPass && (
+            <p className="error-message">Passwords do not match</p>
+          )} */}
           <button
+            type="submit"
             disabled={
               !formValues.username ||
-              (!formValues.password &&
-                formValues.confirmPassword === formValues.password)
+              !formValues.firstName ||
+              !formValues.lastName ||
+              !formValues.email ||
+              !formValues.password ||
+              !formValues.confirmPassword ||
+              formValues.password !== formValues.confirmPassword
             }
           >
             Sign up
