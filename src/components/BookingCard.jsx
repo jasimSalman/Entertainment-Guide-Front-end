@@ -1,6 +1,6 @@
-const BookingCard = ({ name, start, end, key }) => {
+const BookingCard = ({ id, name, start, end }) => {
   return (
-    <li key={key}>
+    <li id={id}>
       <div>{name}</div>
       <div>Start Time: {start}</div>
       <div>End Time: {end}</div>
