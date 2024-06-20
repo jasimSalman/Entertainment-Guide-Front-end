@@ -70,19 +70,7 @@ const placeDetails = () => {
 
       <Review reviews={reviews} placeId={placeId} />
       <FavList placeId={placeId} />
-      <div>
-        <DatePicker
-          showTimeSelect
-          minTime={new Date(0, 0, 0, 9, 0)}
-          maxTime={new Date(0, 0, 0, 23, 0)}
-          selected={date}
-          onChange={(date) => setDate(date)}
-          dateFormat="MMMM d, yyyy h:mmaa"
-          timeIntervals={60}
-          selectsRange
-        />
-        <button onClick={handleBooking}>Book</button>
-      </div>
+
     </div>
   ) : null
 }
