@@ -1,5 +1,8 @@
 body {
-  background-color: rgb(239, 239, 239);
+  background-color: white;
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 main {
@@ -8,7 +11,7 @@ main {
   justify-content: center;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
@@ -16,26 +19,26 @@ a {
   color: black;
   text-decoration: none;
 }
-ul{
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 /*=======Nav=======*/
 .navbar {
   width: 100%;
   height: 30px;
-  color: green;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(109, 112, 85, 0.825);
+  padding: 10px;
 }
 
-.navbar a:hover {
-  background-color: rgb(111, 111, 111);
-  border-radius: 7px;
+.navButton {
+  margin-left: 5px;
+  color: white;
+}
+
+.navButton:hover {
+  transform: scale(2.2);
+  font-weight: bold;
 }
 
 /*=======form=======*/
@@ -50,7 +53,7 @@ form {
   border-radius: 7px;
 }
 
-.input-wrapper{
+.input-wrapper {
   background-color: #fff;
   margin: 5px;
   border: 1px solid #000;
@@ -62,22 +65,22 @@ form {
   width: 350px;
 }
 
-input, select, textarea{
+input,
+select,
+textarea {
   background-color: rgb(203, 202, 202);
   margin-left: 5px;
-  border: 0px solid black ;
-  border-left: 1px solid black ;  
+  border: 0px solid black;
   height: 20px;
   width: 63%;
-  border-radius: 0px 5px 5px 0px;
-
+  border-radius: 0px 2px 2px 0px;
 }
 
-textarea{
+textarea {
   height: 40px;
 }
 
-label{
+label {
   display: flex;
   width: 37%;
   align-items: center;
@@ -92,127 +95,131 @@ button {
 }
 
 /*======= Home Page =======*/
-.home{
+.home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.about{
+.about {
   max-width: 500px;
 }
 
-/*======= cards =======*/
+.searchForm {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchButton {
+  padding: 4px;
+  border: none;
+  border-radius: none;
+  margin: 2px;
+}
+.search {
+  padding: 4px;
+  border: none;
+  border-radius: none;
+  margin: 2px;
+}
 
-.Card{
-  background-color: gray;
+/*======= cards =======*/
+.Card {
   width: 300px;
   height: 200px;
-
   margin: 10px;
-  border-radius: 7px;
-  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1px;
   display: flex;
   flex-direction: column;
-  place-content: end;
+  box-shadow: 1px 3px rgba(8, 8, 8, 0.057);
+  position: relative;
+  overflow: hidden;
+}
+
+.Card:hover {
+  transform: scale(0.9);
+  font-weight: bold;
 }
 
 .Card img {
   width: 300px;
   height: 200px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 7px;
+  border-radius: 2px;
 }
 
-.card-title{
-  background-color:rgba(128, 128, 128, 0.551);
+.card-title {
+  background-color: rgba(231, 216, 216, 0.635);
   position: absolute;
-  width: 300px;
-  height: 50px;
-  text-align: center;
-}
-
-.Card:hover .card-Cover {
-  width: 300px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.31);
-  position: absolute;
-}
-
-/*======= categories Page =======*/
-.categories2 {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 1px solid black;
-  justify-content: center;
-}
-/*=======places Page=======*/
-.places{
+  bottom: 0;
   width: 100%;
+  height: 40px;
+  text-align: center;
+  margin: 0;
+  padding-top: 0;
+}
+
+.mainCard {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
 }
 
 /*=======details Page=======*/
-.place-details{
+.place-details {
   display: flex;
   flex-direction: column;
   width: 400px;
 }
 
-.img-container{
+.img-container {
   margin-top: 20px;
   width: 100%;
   border: 3px solid black;
-
 }
-.img-container img{
+.img-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: flex;
 }
 
-
-.title{
+.title {
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.Favbutton{
+.Favbutton {
   position: absolute;
   margin-top: 30px;
   margin-left: 10px;
-
 }
 
-.Favbutton i{
+.Favbutton i {
   cursor: pointer;
 }
 
-.Favbutton i:hover{
+.Favbutton i:hover {
   cursor: pointer;
-  color: maroon
+  color: maroon;
 }
 /*=======My Place=======*/
-.myPlaces{
+.myPlaces {
   width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.show-add{
+.show-add {
   border: 3px solid black;
   padding: 5px;
 }
 /*=======cards list=======*/
-.List-Card{
+.List-Card {
   width: 100%;
   background-color: rgb(203, 202, 202);
   display: flex;
@@ -223,13 +230,13 @@ button {
   border-radius: 5px;
   margin-top: 10px;
 }
-.List-Card2{
+.List-Card2 {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
-.list-card-title{
+.list-card-title {
   margin: 10px;
 }
 
@@ -239,30 +246,27 @@ button {
   background-color: rgba(0, 0, 0, 0.31);
   position: absolute;
 }
-.list-card-left{
+.list-card-left {
   display: flex;
   width: 80%;
   align-items: center;
-
 }
-.List-Card img{
+.List-Card img {
   border-right: 2px solid black;
   border-radius: 5px;
 }
 
-
 /*=======main photo=======*/
-.main-photo{
+.main-photo {
   display: flex;
   width: 600px;
   height: 220px;
   overflow-y: hidden;
   align-items: center;
   justify-content: center;
-  
+
   backdrop-filter: blur(10px);
   animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
-  
 }
 
 @keyframes backgroundChange {
@@ -275,7 +279,7 @@ button {
   }
 }
 
-.main-photo img{
+.main-photo img {
   border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
@@ -302,6 +306,6 @@ button {
 }
 */
 
-.card-list-btn{
+.card-list-btn {
   z-index: 2;
 }

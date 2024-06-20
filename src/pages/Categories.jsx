@@ -1,14 +1,14 @@
-import CategoryCard from '../components/Categorycard'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Search from '../components/Search'
+import CategoryCard from "../components/CategoryCard"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import Search from "../components/Search"
 
 const Categories = () => {
   const [categories, setCategories] = useState([])
 
   const getCategories = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/categories')
+      let res = await axios.get("http://localhost:3001/categories")
       setCategories(res.data)
     } catch (err) {
       console.log(err)
@@ -20,10 +20,9 @@ const Categories = () => {
   }, [])
 
   return (
-    <div className="categories">
+    <div>
       <Search />
-      <h1>Categories</h1>
-      <div className="categories2">
+      <div className="mainCard">
         {categories.map((Category) => (
           <CategoryCard
             key={Category._id}
