@@ -250,6 +250,39 @@ button {
   border-radius: 5px;
 }
 
+
+/*=======main photo=======*/
+.main-photo{
+  display: flex;
+  width: 600px;
+  height: 220px;
+  overflow-y: hidden;
+  align-items: center;
+  justify-content: center;
+  
+  backdrop-filter: blur(10px);
+  animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
+  
+}
+
+@keyframes backgroundChange {
+  0%,
+  100% {
+    background-color: rgb(174, 174, 174);
+  }
+  50% {
+    background-color: rgb(75, 75, 75);
+  }
+}
+
+.main-photo img{
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  height: 180px;
+  width: 200px;
+}
+
 /*
 .placeCard {
   width: 300px;
@@ -268,3 +301,7 @@ button {
   margin: 10px;
 }
 */
+
+.card-list-btn{
+  z-index: 2;
+}
