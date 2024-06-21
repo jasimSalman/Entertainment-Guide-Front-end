@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 const FavList = ({ placeId }) => {
   const navigate = useNavigate()
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("")
   const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const FavList = ({ placeId }) => {
       const favoritePlaces = res.data
       setIsFavorite(favoritePlaces.some((place) => place._id === placeId))
     } catch (error) {
-      console.error('Error fetching favorite list:', error)
+      console.error("Error fetching favorite list:", error)
     }
   }
 
@@ -43,10 +43,10 @@ const FavList = ({ placeId }) => {
             <i className="material-symbols-outlined">favorite</i>
           </div>
         ) : (
-          <p>This item is already in your favorites.</p>
+          <p> </p>
         )
       ) : (
-        <p>Please log in to add to favorites.</p>
+        <p> </p>
       )}
     </div>
   )

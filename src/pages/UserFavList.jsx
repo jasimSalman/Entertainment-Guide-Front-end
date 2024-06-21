@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
-import FavListCard from '../components/FavListCard'
-import Client from '../services/api'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import FavListCard from "../components/FavListCard"
+import Client from "../services/api"
+import { useNavigate } from "react-router-dom"
 
 const UserFavList = () => {
   const [userList, setUserList] = useState([])
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId")
   let navigate = useNavigate()
 
   const getUserList = async () => {
@@ -13,7 +13,7 @@ const UserFavList = () => {
       const res = await Client.get(`/list/show/${userId}`)
       setUserList(res.data)
     } catch (err) {
-      console.log('Error fetching places:', err)
+      console.log("Error fetching places", err)
     }
   }
 
@@ -22,14 +22,9 @@ const UserFavList = () => {
   }, [])
 
   const handleSubmit = async (placeId) => {
-    const response = await Client.delete(`list/delete/${placeId}/${userId}`)
-    if (response.status === 200 || response.status === 204) {
-      console.log('Place deleted successfully')
-      setUserList(userList.filter((iteme) => iteme._id !== placeId))
-      navigate(`/list/show/${userId}`)
-    } else {
-      console.error('Failed to delete place:', response.status)
-    }
+    await Client.delete(`list/delete/${placeId}/${userId}`)
+    setUserList(userList.filter((iteme) => iteme._id !== placeId))
+    navigate(`/list/show/${userId}`)
   }
 
   return (
