@@ -43,7 +43,7 @@ a {
 }
 
 /*=======form=======*/
-form {
+/* form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,46 +86,77 @@ label {
   width: 37%;
   align-items: center;
   justify-content: center;
-}
+} */
 
 button {
-  width: 80px;
-  height: 30px;
-  border-radius: 7px;
+  width: 100px;
+  height: 25px;
+  border-radius: 3px;
   cursor: pointer;
+  border: 1 solid white;
 }
 
 .reviewForm {
-  align-items: center;
-  background-color: #c5c5c440;
-  width: 300px;
   margin: 20px;
-  padding: 5px;
-  border-radius: 7px;
-}
-.rForm {
-  width: 200px;
-  padding: 10px 30px 10px 30px;
-}
-.reviewInput input,
-select,
-textarea {
-  background-color: rgb(203, 202, 202);
-  margin-left: 5px;
-  border: 0px solid black;
-  height: 20px;
-  width: 100%;
-  border-radius: 0px 2px 2px 0px;
-}
-.revButton {
-  margin-top: 3px;
-}
-.showReview {
   background-color: #c5c5c440;
-  border-radius: 3px;
+  border-radius: 2px;
+}
+
+.reviewInput {
+  margin-bottom: 20px;
+}
+
+.rForm {
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.rForm table {
+  width: 100%;
+}
+
+.review,
+.reviewRating {
+  width: 100%;
+  padding: 3px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.revButton {
+  background-color: #c5c5c440;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.showReview {
+  margin: 5px;
+  border-radius: 5px;
   text-align: center;
-  width: 250px;
-  margin-left: 25px;
+}
+
+.reviewTable {
+  width: 100%;
+  font-size: 12px;
+  border: 1px solid rgba(141, 138, 138, 0.297);
+  border-radius: 4px;
+}
+
+.reviewTable td:first-child {
+  font-weight: bold;
+}
+
+.deleteReview {
+  color: gray;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
 }
 
 /*======= Home Page =======*/
@@ -157,6 +188,7 @@ textarea {
   border: none;
   border-radius: none;
   margin: 2px;
+  width: 700px;
 }
 
 /*======= cards =======*/
@@ -198,6 +230,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 1000px;
 }
 
 /*=======details Page=======*/
