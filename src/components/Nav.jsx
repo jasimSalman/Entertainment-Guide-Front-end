@@ -9,16 +9,14 @@ const Nav = ({ user, handleLogOut }) => {
           <img src="" />
         </Link>
       </div>
+      {user ? (
+        user.type !== 'owner' && <Link to="/categories">categories</Link>
+      ) : (
+        <Link to="/categories">categories</Link>
+      )}
 
       {user ? (
         <div>
-          {user
-            ? user.type !== "owner" && (
-                <Link to="/categories" className="navButton">
-                  Categories
-                </Link>
-              )
-            : null}
           {user.type !== "owner" && (
             <Link to={`/list/show/${user.id}`} className="navButton">
               My list

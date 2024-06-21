@@ -1,6 +1,7 @@
-import React, { useState } from "react"
-import axios from "axios"
-import { Link } from "react-router-dom"
+import React, { useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { BASE_URL } from '../services/api'
 
 function Search() {
   const [placeName, setPlaceName] = useState("")
@@ -9,12 +10,14 @@ function Search() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.post("http://localhost:3001/places/search", {
-        placeName: placeName,
-      })
-      setResults(response.data)
-      setSearchSubmitted(true)
-      setPlaceName("")
+      if (placeName) {
+        const response = await axios.post(`${BASE_URL}/places/search`, {
+          placeName: placeName
+        })
+        setResults(response.data)
+        setSearchSubmitted(true)
+        setPlaceName('')
+      }
     } catch (error) {
       console.error("Error:", error.message)
     }

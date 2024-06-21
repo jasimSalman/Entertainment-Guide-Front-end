@@ -8,6 +8,8 @@ const Review = ({ reviews, placeId }) => {
   const [userId, setUserId] = useState("")
   const [userType, setUserType] = useState("")
 
+  const [reviewList, setReviewList] = useState(reviews || [])
+
   useEffect(() => {
     const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
@@ -21,13 +23,18 @@ const Review = ({ reviews, placeId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Client.post(`/places/${placeId}/reviews/${userId}`, formValues)
+    const response = await Client.post(
+      `/places/${placeId}/reviews/${userId}`,
+      formValues
+    )
+    setReviewList([...reviewList, response.data])
     setFormValues(initialState)
   }
 
   const handleDelete = async (reviewId) => {
     try {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
+      setReviewList(reviewList.filter((review) => review._id !== reviewId))
     } catch (error) {
       console.error("Failed to delete review:", error)
     }
@@ -47,7 +54,6 @@ const Review = ({ reviews, placeId }) => {
                   value={formValues.review}
                   onChange={handleChange}
                 />
-
                 <label htmlFor="rate">Rating</label>
                 <input
                   type="number"
@@ -56,7 +62,6 @@ const Review = ({ reviews, placeId }) => {
                   value={formValues.rate}
                   onChange={handleChange}
                 />
-
                 <button type="submit" className="revButton">
                   Submit
                 </button>
@@ -67,10 +72,15 @@ const Review = ({ reviews, placeId }) => {
       <div>
         {reviews ? (
           <div>
-            {reviews.map((review) => (
+            {reviewList.map((review) => (
               <div key={review._id} className="showReview">
                 <p>Review: {review.review}</p>
                 <p>Rating: {review.reviewRating}</p>
+                {userId === review.user && (
+                  <button onClick={() => handleDelete(review._id)}>
+                    Delete
+                  </button>
+                )}
               </div>
             ))}
           </div>

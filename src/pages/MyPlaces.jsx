@@ -1,14 +1,12 @@
-import { useState, useEffect } from "react"
-import Client from "../services/api"
-import OwnerPlace from "../components/OwnerPlace"
-import { Link } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import Client from '../services/api'
+import OwnerPlace from '../components/OwnerPlace'
+import { Link } from 'react-router-dom'
 
 const MyPlaces = () => {
   const [places, setPlaces] = useState([])
 
-  const userId = localStorage.getItem("userId")
-  // let { placeId } = useParams()
+  const userId = localStorage.getItem('userId')
 
   useEffect(() => {
     const getPlaces = async () => {
@@ -16,7 +14,7 @@ const MyPlaces = () => {
         const res = await Client.get(`/places/all/${userId}`)
         setPlaces(res.data)
       } catch (err) {
-        console.log("Error fetching places:", err)
+        console.log('Error fetching places:', err)
       }
     }
     getPlaces()
@@ -27,12 +25,12 @@ const MyPlaces = () => {
     try {
       const response = await Client.delete(`/places/${placeId}/${userId}`)
       if (response.status === 200 || response.status === 204) {
-        navigate("/myPlaces")
+        setPlaces(places.filter((place) => place._id !== placeId))
       } else {
-        console.error("Failed to delete place:", response.status)
+        console.error('Failed to delete place:', response.status)
       }
     } catch (error) {
-      console.error("Failed to delete place:", error)
+      console.error('Failed to delete place:', error)
     }
   }
 

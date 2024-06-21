@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const OwnerPlace = ({ id, name, poster, deletePlace }) => {
   return (
@@ -9,13 +9,15 @@ const OwnerPlace = ({ id, name, poster, deletePlace }) => {
           <img src={poster} width="100px" height="100px" />
           <h3 className="list-card-title">{name}</h3>
         </div>
-        <div>
-          <Link to={`/myPlaces/edit/${id}`}>
-            <button>Edit place</button>
-          </Link>
-          <button onClick={() => deletePlace(id)}>Remove place</button>
-        </div>
+         </Link>
+
+      <Link to={`/myPlaces/edit/${id}`}>
+        <button className="card-list-btn">Edit place</button>
       </Link>
+
+      <button className="card-list-btn" onClick={() => deletePlace(id)}>
+        Remove place
+      </button>
     </div>
   )
 }

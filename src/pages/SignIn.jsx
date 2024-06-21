@@ -18,7 +18,9 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
-    navigate('/categories')
+    {
+      payload.type === 'user' ? navigate('/categories') : navigate('/myplaces')
+    }
   }
 
   return (
