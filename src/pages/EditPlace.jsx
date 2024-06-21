@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import Client from '../services/api'
 import { useParams, useNavigate } from 'react-router-dom'
 
-
 const EditPlace = () => {
   let navigate = useNavigate()
   const initialState = {
@@ -19,19 +18,17 @@ const EditPlace = () => {
   useEffect(() => {
     const fetchPlaceDetails = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3001/places/${placeId}`
-        )
+        const response = await Client.get(`/places/${placeId}`)
         const place = response.data
         setFormValues({
           placeName: place.placeName,
           placePoster: place.placePoster,
           placePrice: place.placePrice,
           placeDescription: place.placeDescription,
-          placeLocation: place.placeLocation,
+          placeLocation: place.placeLocation
         })
       } catch (error) {
-        console.error("Error fetching place details:", error)
+        console.error('Error fetching place details:', error)
       }
     }
     fetchPlaceDetails()
@@ -49,7 +46,7 @@ const EditPlace = () => {
       setFormValues(initialState)
       navigate('/myplaces')
     } catch (error) {
-      console.error("Error updating place:", error)
+      console.error('Error updating place:', error)
     }
   }
 

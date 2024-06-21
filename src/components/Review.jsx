@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react"
-import Client from "../services/api"
+import { useEffect, useState } from 'react'
+import Client from '../services/api'
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { reviewText: "", rate: "", userId: "" }
+  const initialState = { reviewText: '', reviewRating: '', userId: '' }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState("")
-  const [userType, setUserType] = useState("")
+  const [userId, setUserId] = useState('')
+  const [userType, setUserType] = useState('')
 
-  const [reviewList, setReviewList] = useState(reviews || [])
+  const [reviewList, setReviewList] = useState([])
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
+    const storedUserId = localStorage.getItem('userId')
     if (storedUserId) setUserId(storedUserId)
-    const storedUserType = localStorage.getItem("userType")
+    const storedUserType = localStorage.getItem('userType')
     if (storedUserType) setUserType(storedUserType)
-  }, [])
+    setReviewList(reviews || [])
+  }, [reviews])
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -27,6 +28,7 @@ const Review = ({ reviews, placeId }) => {
       `/places/${placeId}/reviews/${userId}`,
       formValues
     )
+    console.log(formValues)
     setReviewList([...reviewList, response.data])
     setFormValues(initialState)
   }
@@ -36,14 +38,14 @@ const Review = ({ reviews, placeId }) => {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
       setReviewList(reviewList.filter((review) => review._id !== reviewId))
     } catch (error) {
-      console.error("Failed to delete review:", error)
+      console.error('Failed to delete review:', error)
     }
   }
 
   return (
     <div className="reviewForm">
       {userId
-        ? userType === "user" && (
+        ? userType === 'user' && (
             <div className="reviewInput">
               <form onSubmit={handleSubmit} className="rForm">
                 <label htmlFor="review">Review</label>
@@ -57,8 +59,8 @@ const Review = ({ reviews, placeId }) => {
                 <label htmlFor="rate">Rating</label>
                 <input
                   type="number"
-                  name="rate"
-                  className="rate"
+                  name="reviewRating"
+                  className="reviewRating"
                   value={formValues.rate}
                   onChange={handleChange}
                 />
