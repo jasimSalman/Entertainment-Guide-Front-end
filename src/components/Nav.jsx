@@ -1,5 +1,5 @@
-import '../App.css'
-import { Link } from 'react-router-dom'
+import "../App.css"
+import { Link } from "react-router-dom"
 
 const Nav = ({ user, handleLogOut }) => {
   return (
@@ -11,20 +11,14 @@ const Nav = ({ user, handleLogOut }) => {
       </div>
 
       {user ? (
-        user.type !== 'owner' && <Link to="/categories">categories</Link>
-      ) : (
-        <Link to="/categories">categories</Link>
-      )}
-
-      {user ? (
         <div>
-          {user.type !== 'owner' && (
-            <Link to={`/list/show/${user.id}`} className="navButton">
-              My list
+          {user.type !== "owner" && (
+            <Link to="/categories" className="navButton">
+              Categories
             </Link>
           )}
 
-          {user.type === 'owner' ? (
+          {user.type === "owner" ? (
             <Link to={`/booking/all/${user.id}`} className="navButton">
               All Booking
             </Link>
@@ -33,8 +27,13 @@ const Nav = ({ user, handleLogOut }) => {
               Bookings
             </Link>
           )}
+          {user.type !== "owner" && (
+            <Link to={`/list/show/${user.id}`} className="navButton">
+              Favourites
+            </Link>
+          )}
 
-          {user.type === 'owner' && (
+          {user.type === "owner" && (
             <Link to="/MyPlaces" className="navButton">
               My Places
             </Link>
@@ -45,9 +44,14 @@ const Nav = ({ user, handleLogOut }) => {
           </Link>
         </div>
       ) : (
-        <Link to="/signin" className="navButton">
-          SignIn
-        </Link>
+        <div>
+          <Link to="/categories" className="navButton">
+            Categories
+          </Link>
+          <Link to="/signin" className="navButton">
+            SignIn
+          </Link>
+        </div>
       )}
     </div>
   )
