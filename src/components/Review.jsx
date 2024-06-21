@@ -1,7 +1,6 @@
-
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
-import { Rating } from '@mui/material'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
+import { Rating } from "@mui/material"
 
 const Review = ({ reviews, placeId }) => {
   const initialState = { reviewText: "", reviewRating: "", userId: "" }
@@ -71,10 +70,9 @@ const Review = ({ reviews, placeId }) => {
                   <td>Rating</td>
                   <td>
                     <Rating
-                  name="simple-controlled"
-                  value={formValues.reviewRating}
-                  onChange={handleRatingChange}
-                />
+                      name="simple-controlled"
+                      value={formValues.reviewRating}
+                      onChange={handleRatingChange}
                     />
                   </td>
                 </tr>
@@ -90,32 +88,7 @@ const Review = ({ reviews, placeId }) => {
           </form>
         </div>
       )}
-      
-      {userId
-        ? userType === 'user' && (
-            <div className="reviewInput">
-              <form onSubmit={handleSubmit} className="rForm">
-                <label htmlFor="review">Review</label>
-                <input
-                  type="text"
-                  name="review"
-                  className="review"
-                  value={formValues.review}
-                  onChange={handleChange}
-                />
 
-                <Rating
-                  name="simple-controlled"
-                  value={formValues.reviewRating}
-                  onChange={handleRatingChange}
-                />
-                <button type="submit" className="revButton">
-                  Submit
-                </button>
-              </form>
-            </div>
-          )
-        : null}
       <div>
         {reviews.length > 0 ? (
           <div>
@@ -146,17 +119,16 @@ const Review = ({ reviews, placeId }) => {
                       <td>
                         <p>Rating: </p>
                       </td>
-                      <td>{review.reviewRating}</td>
+                      <td>
+                        <Rating
+                          name="read-only"
+                          value={review.reviewRating}
+                          readOnly
+                        />
+                      </td>
                     </tr>
                   </tbody>
                 </table>
-                <p>Review: {review.review}</p>
-                <Rating name="read-only" value={review.reviewRating} readOnly />
-                {userId === review.user && (
-                  <button onClick={() => handleDelete(review._id)}>
-                    Delete
-                  </button>
-                )}
               </div>
             ))}
           </div>
