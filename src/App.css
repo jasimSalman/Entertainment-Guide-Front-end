@@ -8,7 +8,7 @@ main {
   justify-content: center;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
@@ -16,7 +16,7 @@ a {
   color: black;
   text-decoration: none;
 }
-ul{
+ul {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -50,7 +50,7 @@ form {
   border-radius: 7px;
 }
 
-.input-wrapper{
+.input-wrapper {
   background-color: #fff;
   margin: 5px;
   border: 1px solid #000;
@@ -62,22 +62,23 @@ form {
   width: 350px;
 }
 
-input, select, textarea{
+input,
+select,
+textarea {
   background-color: rgb(203, 202, 202);
   margin-left: 5px;
-  border: 0px solid black ;
-  border-left: 1px solid black ;  
+  border: 0px solid black;
+  border-left: 1px solid black;
   height: 20px;
   width: 63%;
   border-radius: 0px 5px 5px 0px;
-
 }
 
-textarea{
+textarea {
   height: 40px;
 }
 
-label{
+label {
   display: flex;
   width: 37%;
   align-items: center;
@@ -92,20 +93,20 @@ button {
 }
 
 /*======= Home Page =======*/
-.home{
+.home {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.about{
+.about {
   max-width: 500px;
 }
 
 /*======= cards =======*/
 
-.Card{
+.Card {
   background-color: gray;
   width: 300px;
   height: 200px;
@@ -125,8 +126,8 @@ button {
   border-radius: 7px;
 }
 
-.card-title{
-  background-color:rgba(128, 128, 128, 0.551);
+.card-title {
+  background-color: rgba(128, 128, 128, 0.551);
   position: absolute;
   width: 300px;
   height: 50px;
@@ -148,7 +149,7 @@ button {
   justify-content: center;
 }
 /*=======places Page=======*/
-.places{
+.places {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -157,62 +158,59 @@ button {
 }
 
 /*=======details Page=======*/
-.place-details{
+.place-details {
   display: flex;
   flex-direction: column;
   width: 400px;
 }
 
-.img-container{
+.img-container {
   margin-top: 20px;
   width: 100%;
   border: 3px solid black;
-
 }
-.img-container img{
+.img-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: flex;
 }
 
-
-.title{
+.title {
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.Favbutton{
+.Favbutton {
   position: absolute;
   margin-top: 30px;
   margin-left: 10px;
-
 }
 
-.Favbutton i{
+.Favbutton i {
   cursor: pointer;
 }
 
-.Favbutton i:hover{
+.Favbutton i:hover {
   cursor: pointer;
-  color: maroon
+  color: maroon;
 }
 /*=======My Place=======*/
-.myPlaces{
+.myPlaces {
   width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.show-add{
+.show-add {
   border: 3px solid black;
   padding: 5px;
 }
 /*=======cards list=======*/
-.List-Card{
+.List-Card {
   width: 100%;
   background-color: rgb(203, 202, 202);
   display: flex;
@@ -223,46 +221,43 @@ button {
   border-radius: 5px;
   margin-top: 10px;
 }
-.List-Card2{
+.List-Card2 {
   display: flex;
   flex-direction: row;
   width: 100%;
   align-items: center;
 }
-.list-card-title{
+.list-card-title {
   margin: 10px;
 }
 
-.List-Card:hover .card-Cover {
+/* .List-Card:hover .card-Cover {
   width: 500px;
   height: 100px;
   background-color: rgba(0, 0, 0, 0.31);
   position: absolute;
-}
-.list-card-left{
+} */
+.list-card-left {
   display: flex;
   width: 80%;
   align-items: center;
-
 }
-.List-Card img{
+.List-Card img {
   border-right: 2px solid black;
   border-radius: 5px;
 }
 
-
 /*=======main photo=======*/
-.main-photo{
+.main-photo {
   display: flex;
   width: 600px;
   height: 220px;
   overflow-y: hidden;
   align-items: center;
   justify-content: center;
-  
+
   backdrop-filter: blur(10px);
   animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
-  
 }
 
 @keyframes backgroundChange {
@@ -275,7 +270,7 @@ button {
   }
 }
 
-.main-photo img{
+.main-photo img {
   border: 2px solid black;
   border-radius: 5px;
   margin: 5px;
@@ -302,6 +297,6 @@ button {
 }
 */
 
-.card-list-btn{
+.card-list-btn {
   z-index: 2;
 }

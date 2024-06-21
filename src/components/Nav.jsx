@@ -7,9 +7,11 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/">
         <img src="" alt="logo" />
       </Link>
-      {user
-        ? user.type !== 'owner' && <Link to="/categories">categories</Link>
-        : null}
+      {user ? (
+        user.type !== 'owner' && <Link to="/categories">categories</Link>
+      ) : (
+        <Link to="/categories">categories</Link>
+      )}
       {user ? (
         <div>
           {user.type !== 'owner' && (

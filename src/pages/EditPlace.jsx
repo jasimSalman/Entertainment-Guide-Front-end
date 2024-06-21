@@ -1,15 +1,16 @@
-import "../App.css"
-import { useState, useEffect } from "react"
-import Client from "../services/api"
-import { useParams } from "react-router-dom"
+import '../App.css'
+import { useState, useEffect } from 'react'
+import Client from '../services/api'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const EditPlace = () => {
+  let navigate = useNavigate()
   const initialState = {
-    placeName: "",
-    placePoster: "",
-    placePrice: "",
-    placeDescription: "",
-    placeLocation: "",
+    placeName: '',
+    placePoster: '',
+    placePrice: '',
+    placeDescription: '',
+    placeLocation: ''
   }
   const [formValues, setFormValues] = useState(initialState)
   const { placeId } = useParams()
@@ -21,6 +22,7 @@ const EditPlace = () => {
     e.preventDefault()
     await Client.put(`/places/${placeId}`, formValues)
     setFormValues(initialState)
+    navigate('/myplaces')
   }
 
   return (

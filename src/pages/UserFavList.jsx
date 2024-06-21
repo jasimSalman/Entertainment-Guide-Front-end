@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 import FavListCard from '../components/FavListCard'
-import { useParams } from 'react-router-dom'
 import Client from '../services/api'
 import { useNavigate } from 'react-router-dom'
 
 const UserFavList = () => {
   const [userList, setUserList] = useState([])
   const userId = localStorage.getItem('userId')
-  let { placeId } = useParams()
   let navigate = useNavigate()
 
   const getUserList = async () => {
@@ -23,10 +21,11 @@ const UserFavList = () => {
     getUserList()
   }, [])
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (placeId) => {
     const response = await Client.delete(`list/delete/${placeId}/${userId}`)
     if (response.status === 200 || response.status === 204) {
       console.log('Place deleted successfully')
+      setUserList(userList.filter((iteme) => iteme._id !== placeId))
       navigate(`/list/show/${userId}`)
     } else {
       console.error('Failed to delete place:', response.status)
@@ -43,7 +42,7 @@ const UserFavList = () => {
               id={place._id}
               name={place.placeName}
               poster={place.placePoster}
-              handleSubmit={handleSubmit}
+              handleSubmit={() => handleSubmit(place._id)}
             />
           ))
         ) : (

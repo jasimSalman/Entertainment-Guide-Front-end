@@ -2,13 +2,14 @@ import CategoryCard from '../components/Categorycard'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Search from '../components/Search'
+import { BASE_URL } from '../services/api'
 
 const Categories = () => {
   const [categories, setCategories] = useState([])
 
   const getCategories = async () => {
     try {
-      let res = await axios.get('http://localhost:3001/categories')
+      let res = await axios.get(`${BASE_URL}/categories`)
       setCategories(res.data)
     } catch (err) {
       console.log(err)

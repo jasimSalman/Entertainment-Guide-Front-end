@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 
 const PlaceCard = ({ id, name, poster }) => {
   return (
