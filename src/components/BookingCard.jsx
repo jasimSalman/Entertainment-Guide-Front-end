@@ -1,10 +1,12 @@
 const BookingCard = ({ id, name, start, end }) => {
   return (
-    <li id={id}>
-      <div>{name}</div>
-      <div>Start Time: {start}</div>
-      <div>End Time: {end}</div>
-    </li>
+    <div id={id}>
+      <h5>{name}</h5>
+      <div className="timeDetail">
+        <h6>Start Time: {start}</h6>
+        <h6>End Time: {end}</h6>
+      </div>
+    </div>
   )
 }
 
