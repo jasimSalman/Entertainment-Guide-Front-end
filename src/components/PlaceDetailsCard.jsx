@@ -19,7 +19,18 @@ const PlaceDetailsCard = ({
 
       <div className="placeDescription">
         <p>{placeDescription}</p>
-        <h2>{placeLocation}</h2>
+        <br />
+        <div>
+          <iframe
+            src={placeLocation}
+            width="400"
+            height="100"
+            style={{ border: "1px solid gray", borderRadius: "4px" }}
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </div>
     </div>
   )

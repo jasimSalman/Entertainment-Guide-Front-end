@@ -91,7 +91,7 @@ const Review = ({ reviews, placeId }) => {
 
       <div>
         {reviews.length > 0 ? (
-          <div>
+          <div className="scrollable-container">
             {reviewList.map((review) => (
               <div key={review._id} className="showReview">
                 <table className="reviewTable">
