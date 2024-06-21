@@ -4,6 +4,8 @@ body {
   padding: 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 main {
@@ -41,52 +43,6 @@ a {
   transform: scale(2.2);
   font-weight: bold;
 }
-
-/*=======form=======*/
-/* form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #c5c5c440;
-  width: 400px;
-  margin: 20px;
-  padding: 5px;
-  border-radius: 7px;
-}
-
-.input-wrapper {
-  background-color: #fff;
-  margin: 5px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  padding-left: 5px;
-  height: flex;
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
-}
-
-input,
-select,
-textarea {
-  background-color: rgb(203, 202, 202);
-  margin-left: 5px;
-  border: 0px solid black;
-  height: 20px;
-  width: 63%;
-  border-radius: 0px 2px 2px 0px;
-}
-
-textarea {
-  height: 40px;
-}
-
-label {
-  display: flex;
-  width: 37%;
-  align-items: center;
-  justify-content: center;
-} */
 
 button {
   width: 100px;
@@ -250,7 +206,7 @@ p {
   border-radius: 3px;
 }
 
-.title {
+.PlaceInfo {
   height: 30px;
   display: flex;
   align-items: center;
@@ -302,6 +258,70 @@ p {
   border: none;
 }
 
+.bookingCard {
+  width: 1050px;
+  background-color: #c5c5c440;
+  border-radius: 2px;
+  text-align: center;
+  box-shadow: 1px 3px rgba(8, 8, 8, 0.057);
+  margin-top: 20px;
+  display: flex;
+}
+.bookingCard:hover {
+  transform: scale(0.9);
+  font-weight: bold;
+}
+.bookingTitle {
+  display: flex;
+  flex: content;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+.bookingTime {
+  display: flex;
+  flex-direction: column;
+  margin-right: 40px;
+  margin-top: 15px;
+}
+.bookingImg {
+  border-radius: 3px;
+  margin-left: 30px;
+  margin-top: 10px;
+  border: 1px solid rgba(202, 190, 190, 0.161);
+}
+.bookName {
+  background-color: rgba(141, 138, 138, 0.122);
+  border-radius: 7px;
+  height: 30px;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 7px;
+}
+.start {
+  background-color: rgba(74, 218, 119, 0.122);
+  border-radius: 7px;
+  height: 30px;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 7px;
+}
+
+.end {
+  background-color: rgba(222, 29, 29, 0.122);
+  border-radius: 7px;
+  height: 30px;
+  text-align: center;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 7px;
+  margin-top: 10px;
+}
+
 /*=======My Place=======*/
 .myPlaces {
   width: 500px;
@@ -314,43 +334,6 @@ p {
   border: 3px solid black;
   padding: 5px;
 }
-/*=======cards list=======*/
-.List-Card {
-  width: 100%;
-  background-color: rgb(203, 202, 202);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-.List-Card2 {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-}
-.list-card-title {
-  margin: 10px;
-}
-
-.List-Card:hover .card-Cover {
-  width: 500px;
-  height: 100px;
-  background-color: rgba(0, 0, 0, 0.31);
-  position: absolute;
-}
-.list-card-left {
-  display: flex;
-  width: 80%;
-  align-items: center;
-}
-.List-Card img {
-  border-right: 2px solid black;
-  border-radius: 5px;
-}
 
 /*=======main photo=======*/
 .main-photo {
@@ -362,16 +345,6 @@ p {
   justify-content: center;
   backdrop-filter: blur(10px);
   animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
-}
-
-@keyframes backgroundChange {
-  0%,
-  100% {
-    background-color: rgb(174, 174, 174);
-  }
-  50% {
-    background-color: rgb(75, 75, 75);
-  }
 }
 
 .main-photo img {
@@ -403,4 +376,196 @@ p {
 
 .card-list-btn {
   z-index: 2;
+}
+
+/*=======favList=======*/
+.favList {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  text-align: center;
+  max-width: 300px;
+  max-height: 250px;
+}
+
+.favInfo {
+  display: flex;
+  justify-content: space-around;
+}
+.favPlaceName {
+  font-size: 12px;
+  text-align: center;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+.FavDebutton {
+  border: none;
+  font-size: 12px;
+}
+
+.FavDebutton:hover {
+  border: red 1px solid;
+  margin-right: 2px;
+}
+.FavCard {
+  border: 2px solid rgb(116, 122, 118);
+  border-radius: 2px;
+  margin-top: 30px;
+  margin-left: 10px;
+  min-height: 250px;
+  max-width: 300px;
+  max-height: 250px;
+  background-color: #c5c5c440;
+}
+
+.FavCard:hover {
+  transform: scale(0.9);
+  font-weight: bold;
+}
+
+/*=======signIn=======*/
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #c5c5c440;
+  width: 400px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 7px;
+  margin-top: 100px;
+}
+
+.input-wrapper {
+  background-color: #fff;
+  margin: 5px;
+  border-radius: 5px;
+  padding-left: 5px;
+  height: flex;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  text-align: center;
+}
+
+.inputFeild,
+textarea {
+  background-color: rgb(203, 202, 202);
+  margin-left: 5px;
+  height: 20px;
+  width: 63%;
+  border-radius: 0px 2px 2px 0px;
+  border: none;
+  align-items: center;
+}
+
+.authButton {
+  border: none;
+  background-color: rgb(183, 183, 183);
+  margin-left: 7px;
+  width: 150px;
+}
+
+.felxSignin {
+  display: flex;
+  justify-content: space-around;
+}
+
+.font {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.color {
+  color: gray;
+  text-decoration: underline;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.label {
+  display: flex;
+  width: 37%;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-align: center;
+}
+
+/*=======OwnerPlaces=======*/
+.PlaceCard {
+  width: 700px;
+  background-color: #c5c5c440;
+  border-radius: 2px;
+  text-align: center;
+  box-shadow: 1px 3px rgba(8, 8, 8, 0.057);
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.PlaceCard:hover {
+  transform: scale(0.9);
+  font-weight: bold;
+}
+
+.ownerButton {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 30px 0px 0px;
+}
+
+.ownerButton2 {
+  margin-top: 4px;
+  width: 150px;
+  border: 1px solid rgba(97, 92, 92, 0.372);
+}
+.ownerButton2:hover {
+  transform: scale(0.9);
+  font-weight: bold;
+}
+
+.OwnerTitle {
+  margin: 10px 0px 0px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.OwnerPlaceName {
+  margin-left: 150px;
+  margin-top: 30px;
+}
+
+.AddPlaceButton {
+  width: 150px;
+  border: none;
+  border-radius: 3px;
+  margin-top: 40px;
+  text-align: center;
+  background-color: rgba(97, 92, 92, 0.372);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.time-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 10px;
+}
+
+.time-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
 }

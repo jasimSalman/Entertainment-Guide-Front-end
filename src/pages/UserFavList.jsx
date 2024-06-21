@@ -28,22 +28,20 @@ const UserFavList = () => {
   }
 
   return (
-    <div className="placess">
-      <div className="places">
-        {userList.length > 0 ? (
-          userList.map((place) => (
-            <FavListCard
-              key={place._id}
-              id={place._id}
-              name={place.placeName}
-              poster={place.placePoster}
-              handleSubmit={() => handleSubmit(place._id)}
-            />
-          ))
-        ) : (
-          <h4>No Places in Your Favorite List</h4>
-        )}
-      </div>
+    <div className="favList">
+      {userList.length > 0 ? (
+        userList.map((place) => (
+          <FavListCard
+            key={place._id}
+            id={place._id}
+            name={place.placeName}
+            poster={place.placePoster}
+            handleSubmit={() => handleSubmit(place._id)}
+          />
+        ))
+      ) : (
+        <h4>No Places in Your Favorite List</h4>
+      )}
     </div>
   )
 }

@@ -10,7 +10,7 @@ const PlaceDetailsCard = ({
       <div className="placePoster">
         <img src={placePoster} />
         <div className="bellow-section">
-          <div className="title">
+          <div className="PlaceInfo">
             <h2>{placeName}</h2>
             <h2>{placePrice}BHD</h2>
           </div>
@@ -26,9 +26,8 @@ const PlaceDetailsCard = ({
             width="400"
             height="100"
             style={{ border: "1px solid gray", borderRadius: "4px" }}
-            allowfullscreen=""
             loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
+            allowFullScreen
           ></iframe>
         </div>
       </div>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { BASE_URL } from '../services/api'
+import React, { useState } from "react"
+import axios from "axios"
+import { Link } from "react-router-dom"
+import { BASE_URL } from "../services/api"
 
 function Search() {
   const [placeName, setPlaceName] = useState("")
@@ -12,11 +12,11 @@ function Search() {
     try {
       if (placeName) {
         const response = await axios.post(`${BASE_URL}/places/search`, {
-          placeName: placeName
+          placeName: placeName,
         })
         setResults(response.data)
         setSearchSubmitted(true)
-        setPlaceName('')
+        setPlaceName("")
       }
     } catch (error) {
       console.error("Error:", error.message)
@@ -36,7 +36,7 @@ function Search() {
         value={placeName}
         onChange={handleInputChange}
         onClick={() => setSearchSubmitted(false)}
-        className="search"
+        className="inputFeild"
       />
       <button onClick={handleSearch} className="searchButton">
         Search

@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
-import OwnerPlace from '../components/OwnerPlace'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from "react"
+import Client from "../services/api"
+import OwnerPlace from "../components/OwnerPlace"
+import { Link } from "react-router-dom"
 
 const MyPlaces = () => {
   const [places, setPlaces] = useState([])
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId")
 
   useEffect(() => {
     const getPlaces = async () => {
@@ -14,7 +14,7 @@ const MyPlaces = () => {
         const res = await Client.get(`/places/all/${userId}`)
         setPlaces(res.data)
       } catch (err) {
-        console.log('Error fetching places:', err)
+        console.log("Error fetching places:", err)
       }
     }
     getPlaces()
@@ -27,18 +27,17 @@ const MyPlaces = () => {
       if (response.status === 200 || response.status === 204) {
         setPlaces(places.filter((place) => place._id !== placeId))
       } else {
-        console.error('Failed to delete place:', response.status)
+        console.error("Failed to delete place:", response.status)
       }
     } catch (error) {
-      console.error('Failed to delete place:', error)
+      console.error("Failed to delete place:", error)
     }
   }
 
   return (
     <div className="myPlaces">
-      <h1>My Places</h1>
-      <Link to={`/addPlace`} className="show-add">
-        Add Place
+      <Link to={`/addPlace`} className="AddPlaceButton">
+        Add new place
       </Link>
       <ul>
         {places.length > 0 ? (
