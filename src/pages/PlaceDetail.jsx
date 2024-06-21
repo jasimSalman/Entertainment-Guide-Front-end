@@ -77,33 +77,37 @@ const PlaceDetails = () => {
   }
 
   return PlaceDetails ? (
-    <div className="place-details">
-      <PlaceDetailsCard
-        placePoster={PlaceDetails.placePoster}
-        placeName={PlaceDetails.placeName}
-        placePrice={PlaceDetails.placePrice}
-        placeDescription={PlaceDetails.placeDescription}
-        placeLocation={PlaceDetails.placeLocation}
-      />
-
-      <Review reviews={reviews} placeId={placeId} />
-      {userId && (
-        <div>
-          <FavList placeId={placeId} />
+    <div>
+      <div className="placeDetail">
+        {userId && (
           <div>
-            <DatePicker
-              showTimeSelect
-              minTime={new Date(0, 0, 0, 9, 0)}
-              maxTime={new Date(0, 0, 0, 23, 0)}
-              selected={date}
-              onChange={(date) => setDate(date)}
-              dateFormat="MMMM d, yyyy h:mmaa"
-              timeIntervals={60}
-              filterDate={passedDayes}
-              filterTime={filterTime}
-            />
-            <button onClick={handleBooking}>Book</button>
+            <FavList placeId={placeId} />
           </div>
+        )}
+        <PlaceDetailsCard
+          placePoster={PlaceDetails.placePoster}
+          placeName={PlaceDetails.placeName}
+          placePrice={PlaceDetails.placePrice}
+          placeDescription={PlaceDetails.placeDescription}
+          placeLocation={PlaceDetails.placeLocation}
+        />
+        <Review reviews={reviews} placeId={placeId} />
+      </div>
+      {userId && (
+        <div className="booking">
+          <DatePicker
+            showTimeSelect
+            minTime={new Date(0, 0, 0, 9, 0)}
+            maxTime={new Date(0, 0, 0, 23, 0)}
+            selected={date}
+            onChange={(date) => setDate(date)}
+            dateFormat="MMMM d, yyyy h:mmaa"
+            timeIntervals={60}
+            filterDate={passedDayes}
+            filterTime={filterTime}
+            handleBooking={handleBooking}
+          />
+          <button onClick={handleBooking}>Book</button>
         </div>
       )}
     </div>
