@@ -35,7 +35,7 @@ const PlaceDetails = () => {
   const createBooking = async () => {
     try {
       const bookingDate = date.toISOString()
-      const res = await Client.post(`/book/${placeId}/create/${userId}`, {
+      await Client.post(`/book/${placeId}/create/${userId}`, {
         date: bookingDate
       })
       navigate(`/booking/${userId}`)
@@ -78,17 +78,62 @@ const PlaceDetails = () => {
 
   const passedDays = (date) => new Date() < date
 
+  const getExcludedDates = () => {
+    if (!placeDetails.offDays) return []
+    const offDayIndices = placeDetails.offDays.map((day) => {
+      const daysOfWeek = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday'
+      ]
+      return daysOfWeek.indexOf(day)
+    })
+
+    let excludedDates = []
+    const today = new Date()
+    for (let i = 0; i < 365; i++) {
+      const date = new Date(today)
+      date.setDate(today.getDate() + i)
+      if (offDayIndices.includes(date.getDay())) {
+        excludedDates.push(date)
+      }
+    }
+
+    return excludedDates
+  }
+
+  const filterTime = (time) => {
+    const selectedDate = new Date(time)
+    const hours = selectedDate.getHours()
+    const minutes = selectedDate.getMinutes()
+
+    const startTime = placeDetails.workingHours?.start.split(':')
+    const endTime = placeDetails.workingHours?.end.split(':')
+
+    const startHour = parseInt(startTime[0])
+    const startMinutes = parseInt(startTime[1])
+    const endHour = parseInt(endTime[0])
+    const endMinutes = parseInt(endTime[1])
+
+    const isWithinWorkingHours =
+      (hours > startHour || (hours === startHour && minutes >= startMinutes)) &&
+      (hours < endHour || (hours === endHour && minutes <= endMinutes))
+
+    const isNotBooked = !disabledTimes.includes(hours)
+
+    return isWithinWorkingHours && isNotBooked
+  }
+
   const disabledTimes = bookings
     .filter(
       (booking) =>
         new Date(booking.start).toDateString() === date.toDateString()
     )
     .map((booking) => new Date(booking.start).getHours())
-
-  const filterTime = (time) => {
-    const selectedDate = new Date(time)
-    return !disabledTimes.includes(selectedDate.getHours())
-  }
 
   return placeDetails ? (
     <div>
@@ -115,12 +160,13 @@ const PlaceDetails = () => {
             <div className="booking">
               <DatePicker
                 showTimeSelect
-                minTime={new Date(0, 0, 0, 9, 0)}
-                maxTime={new Date(0, 0, 0, 23, 0)}
+                minTime={new Date(0, 0, 0, 0, 0)}
+                maxTime={new Date(0, 0, 0, 23, 59)}
                 selected={date}
                 onChange={(date) => setDate(date)}
                 dateFormat="MMMM d, yyyy h:mm aa"
                 timeIntervals={60}
+                excludeDates={getExcludedDates()}
                 filterDate={passedDays}
                 filterTime={filterTime}
               />

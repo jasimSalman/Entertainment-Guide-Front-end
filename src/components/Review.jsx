@@ -3,7 +3,7 @@ import Client from '../services/api'
 import { Rating } from '@mui/material'
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { reviewText: '', reviewRating: '', userId: '' }
+  const initialState = { reviewText: '', reviewRating: 0, userId: '' }
   const [formValues, setFormValues] = useState(initialState)
 
   const [userId, setUserId] = useState('')
@@ -45,7 +45,6 @@ const Review = ({ reviews, placeId }) => {
       console.error('Failed to delete review:', error)
     }
   }
-  const [value, setValue] = useState(2)
 
   return (
     <div className="reviewForm">
@@ -80,7 +79,11 @@ const Review = ({ reviews, placeId }) => {
             {reviewList.map((review) => (
               <div key={review._id} className="showReview">
                 <p>Review: {review.review}</p>
-                <Rating name="read-only" value={review.reviewRating} readOnly />
+                <Rating
+                  name="read-only"
+                  value={Number(review.reviewRating)}
+                  readOnly
+                />
                 {userId === review.user && (
                   <button onClick={() => handleDelete(review._id)}>
                     Delete
