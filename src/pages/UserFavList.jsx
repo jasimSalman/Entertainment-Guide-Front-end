@@ -24,7 +24,6 @@ const UserFavList = () => {
   const handleSubmit = async (placeId) => {
     const response = await Client.delete(`list/delete/${placeId}/${userId}`)
     if (response.status === 200 || response.status === 204) {
-      console.log('Place deleted successfully')
       setUserList(userList.filter((iteme) => iteme._id !== placeId))
       navigate(`/list/show/${userId}`)
     } else {
