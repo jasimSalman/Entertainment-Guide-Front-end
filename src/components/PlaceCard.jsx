@@ -5,7 +5,7 @@ const PlaceCard = ({ id, name, poster }) => {
     <Link to={`/places/${id}`}>
       <div className="Card" id={id}>
         <div className="card-Cover" />
-        <img src={poster} width="100px" height="100px" />
+        <img src={poster} />
         <h3 className="card-title">{name}</h3>
       </div>
     </Link>

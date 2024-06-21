@@ -16,14 +16,14 @@ const Places = () => {
 
         setPlaces(res.data.place)
       } catch (err) {
-        console.log('Error fetching places:', err)
+        console.log("Error fetching places:", err)
       }
     }
     getPlaces()
   }, [id])
 
   return (
-    <div className="places">
+    <div className="mainCard">
       <Search />
       {places.length > 0 ? (
         places.map((place) => (
@@ -37,6 +37,7 @@ const Places = () => {
       ) : (
         <h4>No places in this category.</h4>
       )}
+
     </div>
   )
 }

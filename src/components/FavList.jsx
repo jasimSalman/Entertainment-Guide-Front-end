@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
+import { useNavigate } from "react-router-dom"
 
 const FavList = ({ placeId }) => {
   const navigate = useNavigate()
@@ -8,7 +8,7 @@ const FavList = ({ placeId }) => {
   const [isFavorite, setIsFavorite] = useState(false)
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) {
       setUserId(storedUserId)
       fetchFavorites(storedUserId)
@@ -31,7 +31,7 @@ const FavList = ({ placeId }) => {
       const res = await Client.post(`/list/add/${placeId}/${userId}`)
       navigate(`/list/show/${userId}`)
     } catch (error) {
-      console.error('Error adding to favorites:', error)
+      console.error("Error adding to favorites:", error)
     }
   }
 

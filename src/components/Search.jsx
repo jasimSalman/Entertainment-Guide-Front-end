@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { BASE_URL } from '../services/api'
 
 function Search() {
-  const [placeName, setPlaceName] = useState('')
+  const [placeName, setPlaceName] = useState("")
   const [results, setResults] = useState([])
   const [searchSubmitted, setSearchSubmitted] = useState(false)
 
@@ -19,7 +19,7 @@ function Search() {
         setPlaceName('')
       }
     } catch (error) {
-      console.error('Error:', error.message)
+      console.error("Error:", error.message)
     }
   }
 
@@ -29,26 +29,27 @@ function Search() {
   }
 
   return (
-    <div className="App">
+    <div className="searchForm">
       <input
         type="text"
         placeholder="Enter Place Name"
         value={placeName}
         onChange={handleInputChange}
         onClick={() => setSearchSubmitted(false)}
+        className="search"
       />
-      <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSearch} className="searchButton">
+        Search
+      </button>
       <div>
         {searchSubmitted && results.length === 0 ? (
-          <p>No results found.</p>
+          <p>No Place found.</p>
         ) : (
-          <ul>
-            {results.map((place, index) => (
-              <Link to={`/places/${place._id}`} key={index}>
-                <li>{place.placeName}</li>
-              </Link>
+          <div className="serachResult">
+            {results.map((place) => (
+              <Link to={`/places/${place._id}`}>{place.placeName}</Link>
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>

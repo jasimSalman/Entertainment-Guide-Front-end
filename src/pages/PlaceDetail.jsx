@@ -20,21 +20,6 @@ const PlaceDetails = () => {
   const userType = localStorage.getItem('userType')
   let { placeId } = useParams()
 
-  //This function is use for deleting a place
-  // const deletePlace = async () => {
-  //   try {
-  //     const response = await Client.delete(`/places/${placeId}/${userId}`)
-  //     if (response.status === 200 || response.status === 204) {
-  //       navigate("/myPlaces")
-  //     } else {
-  //       console.error("Failed to delete place:", response.status)
-  //     }
-  //   } catch (error) {
-  //     console.error("Failed to delete place:", error)
-  //   }
-  // }
-
-  //This function will return all the bookings of all the users.
   const allBookings = async () => {
     try {
       const res = await Client.get('/book/all-bookings')
@@ -44,7 +29,6 @@ const PlaceDetails = () => {
     }
   }
 
-  //This function is use for creating a booking
   const createBooking = async () => {
     try {
       const bookingDate = date.toISOString()
@@ -57,13 +41,11 @@ const PlaceDetails = () => {
     }
   }
 
-  //This function will retrive all the places info.
   const GetPlaceDetails = async () => {
     const response = await axios.get(`${BASE_URL}/places/${placeId}`)
     setPlaceDetails(response.data)
   }
 
-  //This function will retrive all the reviews of a particualr place.
   const GetReviews = async () => {
     const res = await axios.get(`${BASE_URL}/places/${placeId}/reviews`)
     setReviews(res.data)
@@ -94,7 +76,13 @@ const PlaceDetails = () => {
   }
 
   return PlaceDetails ? (
-    <div className="place-details">
+        <div>
+    <div className="placeDetail">
+          {userId ؟ userType === 'user' && (
+          <div>
+            <FavList placeId={placeId} />
+          </div>
+        ) : null}
       <PlaceDetailsCard
         placePoster={PlaceDetails.placePoster}
         placeName={PlaceDetails.placeName}
@@ -102,16 +90,14 @@ const PlaceDetails = () => {
         placeDescription={PlaceDetails.placeDescription}
         placeLocation={PlaceDetails.placeLocation}
       />
-      {/* {userId == PlaceDetails.owner && (
-        <button onClick={deletePlace}>Delete</button>
-      )} */}
 
       <Review reviews={reviews} placeId={placeId} />
+            </div>
       {userId
         ? userType === 'user' && (
             <div>
               <FavList placeId={placeId} />
-              <div>
+              <div className="booking">
                 <DatePicker
                   showTimeSelect
                   minTime={new Date(0, 0, 0, 9, 0)}
@@ -125,9 +111,6 @@ const PlaceDetails = () => {
                 />
                 <button onClick={handleBooking}>Book</button>
               </div>
-            </div>
-          )
-        : null}
     </div>
   ) : null
 }

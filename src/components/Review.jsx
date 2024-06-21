@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import Client from '../services/api'
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { reviewText: '', rate: '', userId: '' }
+  const initialState = { reviewText: "", rate: "", userId: "" }
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState('')
-  const [userType, setUserType] = useState('')
+  const [userId, setUserId] = useState("")
+  const [userType, setUserType] = useState("")
 
   const [reviewList, setReviewList] = useState(reviews || [])
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
-    const storedUserType = localStorage.getItem('userType')
+    const storedUserType = localStorage.getItem("userType")
     if (storedUserType) setUserType(storedUserType)
   }, [])
 
@@ -36,35 +36,16 @@ const Review = ({ reviews, placeId }) => {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
       setReviewList(reviewList.filter((review) => review._id !== reviewId))
     } catch (error) {
-      console.error('Failed to delete review:', error)
+      console.error("Failed to delete review:", error)
     }
   }
 
   return (
-    <div>
-      <div>
-        {reviews ? (
-          <ul>
-            {reviewList.map((review) => (
-              <li key={review._id}>
-                <p>Review: {review.review}</p>
-                <p>Rating: {review.reviewRating}</p>
-                {userId === review.user && (
-                  <button onClick={() => handleDelete(review._id)}>
-                    Delete
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <h3>No Reviews</h3>
-        )}
-      </div>
+    <div className="reviewForm">
       {userId
-        ? userType === 'user' && (
-            <div>
-              <form onSubmit={handleSubmit}>
+        ? userType === "user" && (
+            <div className="reviewInput">
+              <form onSubmit={handleSubmit} className="rForm">
                 <label htmlFor="review">Review</label>
                 <input
                   type="text"
@@ -75,17 +56,38 @@ const Review = ({ reviews, placeId }) => {
                 />
                 <label htmlFor="rate">Rating</label>
                 <input
-                  type="text"
+                  type="number"
                   name="rate"
                   className="rate"
                   value={formValues.rate}
                   onChange={handleChange}
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" className="revButton">
+                  Submit
+                </button>
               </form>
             </div>
           )
         : null}
+      <div>
+        {reviews ? (
+          <div>
+            {reviewList.map((review) => (
+              <div key={review._id} className="showReview">
+                <p>Review: {review.review}</p>
+                <p>Rating: {review.reviewRating}</p>
+                {userId === review.user && (
+                  <button onClick={() => handleDelete(review._id)}>
+                    Delete
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <h3>No Reviews</h3>
+        )}
+      </div>
     </div>
   )
 }

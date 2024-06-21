@@ -10,6 +10,7 @@ const Categories = () => {
   const getCategories = async () => {
     try {
       let res = await axios.get(`${BASE_URL}/categories`)
+
       setCategories(res.data)
     } catch (err) {
       console.log(err)
@@ -21,10 +22,9 @@ const Categories = () => {
   }, [])
 
   return (
-    <div className="categories">
+    <div>
       <Search />
-      <h1>Categories</h1>
-      <div className="categories2">
+      <div className="mainCard">
         {categories.map((Category) => (
           <CategoryCard
             key={Category._id}

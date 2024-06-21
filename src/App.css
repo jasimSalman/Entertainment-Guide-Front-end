@@ -1,5 +1,9 @@
 body {
-  background-color: rgb(239, 239, 239);
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 main {
@@ -16,26 +20,26 @@ a {
   color: black;
   text-decoration: none;
 }
-ul {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
 
 /*=======Nav=======*/
 .navbar {
   width: 100%;
   height: 30px;
-  color: green;
-  border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(109, 112, 85, 0.825);
+  padding: 10px;
 }
 
-.navbar a:hover {
-  background-color: rgb(111, 111, 111);
-  border-radius: 7px;
+.navButton {
+  margin-left: 5px;
+  color: white;
+}
+
+.navButton:hover {
+  transform: scale(2.2);
+  font-weight: bold;
 }
 
 /*=======form=======*/
@@ -68,10 +72,9 @@ textarea {
   background-color: rgb(203, 202, 202);
   margin-left: 5px;
   border: 0px solid black;
-  border-left: 1px solid black;
   height: 20px;
   width: 63%;
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 2px 2px 0px;
 }
 
 textarea {
@@ -92,6 +95,39 @@ button {
   cursor: pointer;
 }
 
+.reviewForm {
+  align-items: center;
+  background-color: #c5c5c440;
+  width: 300px;
+  margin: 20px;
+  padding: 5px;
+  border-radius: 7px;
+}
+.rForm {
+  width: 200px;
+  padding: 10px 30px 10px 30px;
+}
+.reviewInput input,
+select,
+textarea {
+  background-color: rgb(203, 202, 202);
+  margin-left: 5px;
+  border: 0px solid black;
+  height: 20px;
+  width: 100%;
+  border-radius: 0px 2px 2px 0px;
+}
+.revButton {
+  margin-top: 3px;
+}
+.showReview {
+  background-color: #c5c5c440;
+  border-radius: 3px;
+  text-align: center;
+  width: 250px;
+  margin-left: 25px;
+}
+
 /*======= Home Page =======*/
 .home {
   display: flex;
@@ -104,82 +140,89 @@ button {
   max-width: 500px;
 }
 
-/*======= cards =======*/
+.searchForm {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchButton {
+  padding: 4px;
+  border: none;
+  border-radius: none;
+  margin: 2px;
+}
+.search {
+  padding: 4px;
+  border: none;
+  border-radius: none;
+  margin: 2px;
+}
 
+/*======= cards =======*/
 .Card {
-  background-color: gray;
   width: 300px;
   height: 200px;
-
   margin: 10px;
-  border-radius: 7px;
-  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1px;
   display: flex;
   flex-direction: column;
-  place-content: end;
+  box-shadow: 1px 3px rgba(8, 8, 8, 0.057);
+  position: relative;
+  overflow: hidden;
+}
+
+.Card:hover {
+  transform: scale(0.9);
+  font-weight: bold;
 }
 
 .Card img {
   width: 300px;
   height: 200px;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 7px;
+  border-radius: 2px;
 }
 
 .card-title {
-  background-color: rgba(128, 128, 128, 0.551);
+  background-color: rgba(231, 216, 216, 0.635);
   position: absolute;
-  width: 300px;
-  height: 50px;
-  text-align: center;
-}
-
-.Card:hover .card-Cover {
-  width: 300px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.31);
-  position: absolute;
-}
-
-/*======= categories Page =======*/
-.categories2 {
-  display: flex;
-  flex-wrap: wrap;
-  border-bottom: 1px solid black;
-  justify-content: center;
-}
-/*=======places Page=======*/
-.places {
+  bottom: 0;
   width: 100%;
+  height: 40px;
+  text-align: center;
+  margin: 0;
+  padding-top: 0;
+}
+
+.mainCard {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
 }
 
 /*=======details Page=======*/
-.place-details {
+.placeDetail {
   display: flex;
-  flex-direction: column;
-  width: 400px;
+  flex-direction: row;
+  margin: 4px;
 }
 
-.img-container {
-  margin-top: 20px;
-  width: 100%;
-  border: 3px solid black;
-}
-.img-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.placePoster img {
+  margin: 4px;
+  max-width: 400px;
   display: flex;
+  border-radius: 3px;
 }
 
 .title {
   height: 30px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+.info {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
@@ -189,14 +232,18 @@ button {
   margin-left: 10px;
 }
 
-.Favbutton i {
-  cursor: pointer;
-}
-
 .Favbutton i:hover {
   cursor: pointer;
   color: maroon;
 }
+.placeDescription {
+  margin-left: 70px;
+  margin-right: 70px;
+}
+/* .booking {
+  margin-top: 60px;
+} */
+
 /*=======My Place=======*/
 .myPlaces {
   width: 500px;
@@ -231,12 +278,12 @@ button {
   margin: 10px;
 }
 
-/* .List-Card:hover .card-Cover {
+.List-Card:hover .card-Cover {
   width: 500px;
   height: 100px;
   background-color: rgba(0, 0, 0, 0.31);
   position: absolute;
-} */
+}
 .list-card-left {
   display: flex;
   width: 80%;
