@@ -25,54 +25,62 @@ const UpdatePassword = () => {
   }
 
   return (
-    <div className="update-password col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
-            <input
-              onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="Username"
-              value={formValues.username}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="newPassword">New Password</label>
-            <input
-              onChange={handleChange}
-              name="newPassword"
-              type="password"
-              placeholder="New Password"
-              value={formValues.newPassword}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formValues.confirmPassword}
-              required
-            />
-          </div>
-          <button
-            disabled={
-              !formValues.username ||
-              !formValues.newPassword ||
-              !formValues.confirmPassword ||
-              formValues.newPassword !== formValues.confirmPassword
-            }
-          >
-            Update Password
-          </button>
-        </form>
-      </div>
+    <div className="signin">
+      <form onSubmit={handleSubmit}>
+        <div className="input-wrapper">
+          <label htmlFor="username" className="label">
+            Username
+          </label>
+          <input
+            onChange={handleChange}
+            name="username"
+            type="text"
+            placeholder="Username"
+            value={formValues.username}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="newPassword" className="label">
+            New Password
+          </label>
+          <input
+            onChange={handleChange}
+            name="newPassword"
+            type="password"
+            placeholder="New Password"
+            value={formValues.newPassword}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="confirmPassword" className="label">
+            Confirm Password
+          </label>
+          <input
+            onChange={handleChange}
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formValues.confirmPassword}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <button
+          disabled={
+            !formValues.username ||
+            !formValues.newPassword ||
+            !formValues.confirmPassword ||
+            formValues.newPassword !== formValues.confirmPassword
+          }
+          className="authButton"
+        >
+          Update Password
+        </button>
+      </form>
     </div>
   )
 }

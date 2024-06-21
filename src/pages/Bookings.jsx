@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
-import BookingCard from '../components/BookingCard'
+import { useState, useEffect } from "react"
+import Client from "../services/api"
+import BookingCard from "../components/BookingCard"
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([])
 
-  const userId = localStorage.getItem('userId')
+  const userId = localStorage.getItem("userId")
 
   useEffect(() => {
     const getBookings = async () => {
@@ -13,7 +13,7 @@ const Bookings = () => {
         const res = await Client.get(`/book/${userId}`)
         setBookings(res.data)
       } catch (err) {
-        console.log('Error fetching bookingd:', err)
+        console.log("Error fetching bookingd:", err)
       }
     }
     getBookings()
@@ -25,6 +25,8 @@ const Bookings = () => {
         bookings.map((book) => (
           <BookingCard
             name={book.place.placeName}
+            poster={book.place.placePoster}
+            price={book.place.placePrice}
             start={book.start}
             end={book.end}
             key={book._id}

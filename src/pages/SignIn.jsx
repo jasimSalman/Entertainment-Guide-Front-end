@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { SignInUser } from '../services/Auth'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useState } from "react"
+import { SignInUser } from "../services/Auth"
+import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const initialState = { username: '', password: '' }
+  const initialState = { username: "", password: "" }
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
@@ -19,55 +19,61 @@ const SignIn = ({ setUser }) => {
     setFormValues(initialState)
     setUser(payload)
     {
-      payload.type === 'user' ? navigate('/categories') : navigate('/myplaces')
+      payload.type === "user" ? navigate("/categories") : navigate("/myplaces")
     }
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="username">username</label>
-            <input
-              onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="username"
-              value={formValues.username}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-          </div>
-          <button disabled={!formValues.username || !formValues.password}>
-            Sign In
-          </button>
-        </form>
+    <div className="signin">
+      <form onSubmit={handleSubmit}>
+        <div className="input-wrapper">
+          <label htmlFor="username" className="label">
+            username
+          </label>
+          <input
+            onChange={handleChange}
+            name="username"
+            type="text"
+            placeholder=" please enter your username"
+            value={formValues.username}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="password" className="label">
+            Password
+          </label>
+          <input
+            onChange={handleChange}
+            type="password"
+            name="password"
+            placeholder=" please enter your password"
+            value={formValues.password}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <button
+          disabled={!formValues.username || !formValues.password}
+          className="authButton"
+        >
+          SignIn
+        </button>
+      </form>
+      <div>
         <div>
-          <div>
-            <Link to="/updatePassword">
-              <h4>Forget your password?</h4>
-            </Link>
-          </div>
-          <div>
-            <h4>Don't have an accout?</h4>
+          <Link to="/updatePassword">
+            <div className="font">Forget your password?</div>
+          </Link>
+          <div className="font">Don't have an accout?</div>
+          <div className="felxSignin">
             <Link to="/register/user">
-              <button>Register as A user </button>
+              <h6 className="color"> Register as a user</h6>
             </Link>
-
-            <span>Or</span>
-
+            <h5>OR </h5>
             <Link to="/register/owner">
-              <button>Register as an Owner </button>
+              <h6 className="color"> Register as an Owner</h6>
             </Link>
           </div>
         </div>

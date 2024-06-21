@@ -1,16 +1,16 @@
-import '../App.css'
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
-import { useParams, useNavigate } from 'react-router-dom'
+import "../App.css"
+import { useState, useEffect } from "react"
+import Client from "../services/api"
+import { useParams, useNavigate } from "react-router-dom"
 
 const EditPlace = () => {
   let navigate = useNavigate()
   const initialState = {
-    placeName: '',
-    placePoster: '',
-    placePrice: '',
-    placeDescription: '',
-    placeLocation: ''
+    placeName: "",
+    placePoster: "",
+    placePrice: "",
+    placeDescription: "",
+    placeLocation: "",
   }
   const [formValues, setFormValues] = useState(initialState)
   const { placeId } = useParams()
@@ -25,10 +25,10 @@ const EditPlace = () => {
           placePoster: place.placePoster,
           placePrice: place.placePrice,
           placeDescription: place.placeDescription,
-          placeLocation: place.placeLocation
+          placeLocation: place.placeLocation,
         })
       } catch (error) {
-        console.error('Error fetching place details:', error)
+        console.error("Error fetching place details:", error)
       }
     }
     fetchPlaceDetails()
@@ -44,83 +44,97 @@ const EditPlace = () => {
       await Client.put(`/places/${placeId}`, formValues)
       setFormValues(initialState)
       setFormValues(initialState)
-      navigate('/myplaces')
+      navigate("/myplaces")
     } catch (error) {
-      console.error('Error updating place:', error)
+      console.error("Error updating place:", error)
     }
   }
 
   return (
-    <div className="addPlace col">
-      <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="placeName">Place Name</label>
-            <input
-              onChange={handleChange}
-              name="placeName"
-              type="text"
-              placeholder="Place Name"
-              value={formValues.placeName}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="placePoster">Place Poster URL</label>
-            <input
-              onChange={handleChange}
-              name="placePoster"
-              type="text"
-              placeholder="Place Poster URL"
-              value={formValues.placePoster}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="placePrice">Place Price</label>
-            <input
-              onChange={handleChange}
-              name="placePrice"
-              type="number"
-              placeholder="Place Price"
-              value={formValues.placePrice}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="placeDescription">Place Description</label>
-            <textarea
-              onChange={handleChange}
-              name="placeDescription"
-              placeholder="Place Description"
-              value={formValues.placeDescription}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="placeLocation">Place Location</label>
-            <input
-              onChange={handleChange}
-              name="placeLocation"
-              type="text"
-              placeholder="Place Location"
-              value={formValues.placeLocation}
-              required
-            />
-          </div>
-          <button
-            disabled={
-              !formValues.placeName ||
-              !formValues.placePoster ||
-              !formValues.placePrice ||
-              !formValues.placeDescription ||
-              !formValues.placeLocation
-            }
-          >
-            Save Place
-          </button>
-        </form>
-      </div>
+    <div className="signin">
+      <form onSubmit={handleSubmit}>
+        <div className="input-wrapper">
+          <label htmlFor="placeName" className="label">
+            Place Name
+          </label>
+          <input
+            onChange={handleChange}
+            name="placeName"
+            type="text"
+            placeholder="Place Name"
+            value={formValues.placeName}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="placePoster" className="label">
+            Place Poster URL
+          </label>
+          <input
+            onChange={handleChange}
+            name="placePoster"
+            type="text"
+            placeholder="Place Poster URL"
+            value={formValues.placePoster}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="placePrice" className="label">
+            Place Price
+          </label>
+          <input
+            onChange={handleChange}
+            name="placePrice"
+            type="number"
+            placeholder="Place Price"
+            value={formValues.placePrice}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="placeDescription" className="label">
+            Place Description
+          </label>
+          <textarea
+            onChange={handleChange}
+            name="placeDescription"
+            placeholder="Place Description"
+            value={formValues.placeDescription}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <div className="input-wrapper">
+          <label htmlFor="placeLocation" className="label">
+            Place Location
+          </label>
+          <input
+            onChange={handleChange}
+            name="placeLocation"
+            type="text"
+            placeholder="Place Location"
+            value={formValues.placeLocation}
+            required
+            className="inputFeild"
+          />
+        </div>
+        <button
+          disabled={
+            !formValues.placeName ||
+            !formValues.placePoster ||
+            !formValues.placePrice ||
+            !formValues.placeDescription ||
+            !formValues.placeLocation
+          }
+          className="authButton"
+        >
+          Save Place
+        </button>
+      </form>
     </div>
   )
 }

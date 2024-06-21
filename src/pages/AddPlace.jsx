@@ -1,26 +1,26 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../App.css'
-import Client from '../services/api'
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import "../App.css"
+import Client from "../services/api"
 
 const AddPlace = () => {
   let navigate = useNavigate()
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("")
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
+    const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
   }, [])
 
   const initialState = {
-    placeName: '',
-    placePoster: '',
-    placePrice: '',
-    placeDescription: '',
-    placeLocation: '',
-    category: '',
+    placeName: "",
+    placePoster: "",
+    placePrice: "",
+    placeDescription: "",
+    placeLocation: "",
+    category: "",
     offDays: [],
-    workingTimeStart: '',
-    workingTimeEnd: ''
+    workingTimeStart: "",
+    workingTimeEnd: "",
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -35,26 +35,26 @@ const AddPlace = () => {
     if (checked) {
       setFormValues({
         ...formValues,
-        offDays: [...offDays, value]
+        offDays: [...offDays, value],
       })
     } else {
       setFormValues({
         ...formValues,
-        offDays: offDays.filter((day) => day !== value)
+        offDays: offDays.filter((day) => day !== value),
       })
     }
   }
 
   const convetTime = (time) => {
-    const [timePart, modifier] = time.split(' ')
-    let [hours, minutes] = timePart.split(':')
+    const [timePart, modifier] = time.split(" ")
+    let [hours, minutes] = timePart.split(":")
 
-    if (modifier === 'PM' && hours !== '12') {
+    if (modifier === "PM" && hours !== "12") {
       hours = parseInt(hours, 10) + 12
     }
 
-    if (modifier === 'AM' && hours === '12') {
-      hours = '00'
+    if (modifier === "AM" && hours === "12") {
+      hours = "00"
     }
 
     return `${hours}:${minutes}`
@@ -69,20 +69,22 @@ const AddPlace = () => {
     const formData = {
       ...formValues,
       workingTimeStart: convertedStartTime,
-      workingTimeEnd: convertedEndTime
+      workingTimeEnd: convertedEndTime,
     }
 
     await Client.post(`/places/new/${userId}`, formData)
     setFormValues(initialState)
-    navigate('/myPlaces')
+    navigate("/myPlaces")
   }
 
   return (
-    <div className="addPlace col">
+    <div className="signin">
       <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="placeName">Place Name</label>
+            <label htmlFor="placeName" className="label">
+              Place Name
+            </label>
             <input
               onChange={handleChange}
               name="placeName"
@@ -90,16 +92,20 @@ const AddPlace = () => {
               placeholder="Place Name"
               value={formValues.placeName}
               required
+              className="inputFeild"
             />
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="category">Place Category</label>
+            <label htmlFor="category" className="label">
+              Place Category
+            </label>
             <select
               name="category"
               id="category"
               value={formValues.category}
               onChange={handleChange}
+              className="inputFeild"
             >
               <option value="Amusement Parks">Amusement Parks</option>
               <option value="Cinemas and Theaters">Cinemas and Theaters</option>
@@ -123,7 +129,9 @@ const AddPlace = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="placePoster">Place Poster URL</label>
+            <label htmlFor="placePoster" className="label">
+              Place Poster URL
+            </label>
             <input
               onChange={handleChange}
               name="placePoster"
@@ -131,11 +139,14 @@ const AddPlace = () => {
               placeholder="Place Poster URL"
               value={formValues.placePoster}
               required
+              className="inputFeild"
             />
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="placePrice">Place Price</label>
+            <label htmlFor="placePrice" className="label">
+              Place Price
+            </label>
             <input
               onChange={handleChange}
               name="placePrice"
@@ -143,10 +154,13 @@ const AddPlace = () => {
               placeholder="Place Price"
               value={formValues.placePrice}
               required
+              className="inputFeild"
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="placeLocation">Place Location</label>
+            <label htmlFor="placeLocation" className="label">
+              Place Location
+            </label>
             <input
               onChange={handleChange}
               name="placeLocation"
@@ -154,38 +168,43 @@ const AddPlace = () => {
               placeholder="Place Location"
               value={formValues.placeLocation}
               required
+              className="inputFeild"
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="placeDescription">Place Description</label>
+            <label htmlFor="placeDescription" className="label">
+              Place Description
+            </label>
             <textarea
               onChange={handleChange}
               name="placeDescription"
               placeholder="Place Description"
               value={formValues.placeDescription}
               required
+              className="inputFeild"
             />
           </div>
 
           <div className="input-wrapper">
-            <label>Off Days</label>
+            <label className="label">Off Days</label>
             <div className="checkbox-group">
               {[
-                'Sunday',
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday'
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
               ].map((day, index) => (
-                <label key={index}>
+                <label key={index} className="checkbox-label">
                   <input
                     type="checkbox"
                     name="offDays"
                     value={day}
                     checked={formValues.offDays.includes(day)}
                     onChange={handleCheckboxChange}
+                    className="inputFeild"
                   />
                   {day}
                 </label>
@@ -194,24 +213,30 @@ const AddPlace = () => {
           </div>
 
           <div className="input-wrapper">
-            <label>Working Hours</label>
+            <label className="label">Working Hours</label>
             <div className="time-group">
-              <label>From:</label>
-              <input
-                type="time"
-                name="workingTimeStart"
-                value={formValues.workingTimeStart}
-                onChange={handleChange}
-                required
-              />
-              <label>To:</label>
-              <input
-                type="time"
-                name="workingTimeEnd"
-                value={formValues.workingTimeEnd}
-                onChange={handleChange}
-                required
-              />
+              <div className="time-input">
+                <label>From:</label>
+                <input
+                  type="time"
+                  name="workingTimeStart"
+                  value={formValues.workingTimeStart}
+                  onChange={handleChange}
+                  required
+                  className="inputFeild"
+                />
+              </div>
+              <div className="time-input">
+                <label>To:</label>
+                <input
+                  type="time"
+                  name="workingTimeEnd"
+                  value={formValues.workingTimeEnd}
+                  onChange={handleChange}
+                  required
+                  className="inputFeild"
+                />
+              </div>
             </div>
           </div>
 
@@ -223,6 +248,7 @@ const AddPlace = () => {
               !formValues.placeDescription ||
               !formValues.placeLocation
             }
+            className="authButton"
           >
             Add Place
           </button>
