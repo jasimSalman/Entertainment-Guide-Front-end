@@ -17,7 +17,10 @@ const AddPlace = () => {
     placePrice: '',
     placeDescription: '',
     placeLocation: '',
-    category: ''
+    category: '',
+    offDays: [],
+    workingTimeStart: '',
+    workingTimeEnd: ''
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -26,9 +29,50 @@ const AddPlace = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target
+    const { offDays } = formValues
+    if (checked) {
+      setFormValues({
+        ...formValues,
+        offDays: [...offDays, value]
+      })
+    } else {
+      setFormValues({
+        ...formValues,
+        offDays: offDays.filter((day) => day !== value)
+      })
+    }
+  }
+
+  const convetTime = (time) => {
+    const [timePart, modifier] = time.split(' ')
+    let [hours, minutes] = timePart.split(':')
+
+    if (modifier === 'PM' && hours !== '12') {
+      hours = parseInt(hours, 10) + 12
+    }
+
+    if (modifier === 'AM' && hours === '12') {
+      hours = '00'
+    }
+
+    return `${hours}:${minutes}`
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Client.post(`/places/new/${userId}`, formValues)
+    const { workingTimeStart, workingTimeEnd } = formValues
+    const convertedStartTime = convetTime(workingTimeStart)
+    const convertedEndTime = convetTime(workingTimeEnd)
+
+    const formData = {
+      ...formValues,
+      workingTimeStart: convertedStartTime,
+      workingTimeEnd: convertedEndTime
+    }
+
+    await Client.post(`/places/new/${userId}`, formData)
     setFormValues(initialState)
     navigate('/myPlaces')
   }
@@ -89,6 +133,7 @@ const AddPlace = () => {
               required
             />
           </div>
+
           <div className="input-wrapper">
             <label htmlFor="placePrice">Place Price</label>
             <input
@@ -121,7 +166,55 @@ const AddPlace = () => {
               required
             />
           </div>
-          
+
+          <div className="input-wrapper">
+            <label>Off Days</label>
+            <div className="checkbox-group">
+              {[
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday'
+              ].map((day, index) => (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    name="offDays"
+                    value={day}
+                    checked={formValues.offDays.includes(day)}
+                    onChange={handleCheckboxChange}
+                  />
+                  {day}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="input-wrapper">
+            <label>Working Hours</label>
+            <div className="time-group">
+              <label>From:</label>
+              <input
+                type="time"
+                name="workingTimeStart"
+                value={formValues.workingTimeStart}
+                onChange={handleChange}
+                required
+              />
+              <label>To:</label>
+              <input
+                type="time"
+                name="workingTimeEnd"
+                value={formValues.workingTimeEnd}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
           <button
             disabled={
               !formValues.placeName ||

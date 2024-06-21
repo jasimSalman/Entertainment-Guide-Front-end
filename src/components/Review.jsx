@@ -3,7 +3,8 @@ import Client from "../services/api"
 import { Rating } from "@mui/material"
 
 const Review = ({ reviews, placeId }) => {
-  const initialState = { reviewText: "", reviewRating: "", userId: "" }
+  const initialState = { reviewText: '', reviewRating: 0, userId: '' }
+
   const [formValues, setFormValues] = useState(initialState)
 
   const [userId, setUserId] = useState("")
@@ -45,7 +46,6 @@ const Review = ({ reviews, placeId }) => {
       console.error("Failed to delete review:", error)
     }
   }
-  const [value, setValue] = useState(2)
 
   return (
     <div className="reviewForm">
