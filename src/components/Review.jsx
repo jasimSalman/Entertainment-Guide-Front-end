@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react"
-import Client from "../services/api"
-import { Rating } from "@mui/material"
+import { useEffect, useState } from 'react'
+import Client from '../services/api'
+import { Rating } from '@mui/material'
 
 const Review = ({ reviews, placeId }) => {
   const initialState = { reviewText: '', reviewRating: 0, userId: '' }
 
   const [formValues, setFormValues] = useState(initialState)
 
-  const [userId, setUserId] = useState("")
-  const [userType, setUserType] = useState("")
+  const [userId, setUserId] = useState('')
+  const [userType, setUserType] = useState('')
 
   const [reviewList, setReviewList] = useState([])
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
+    const storedUserId = localStorage.getItem('userId')
     if (storedUserId) setUserId(storedUserId)
-    const storedUserType = localStorage.getItem("userType")
+    const storedUserType = localStorage.getItem('userType')
     if (storedUserType) setUserType(storedUserType)
     setReviewList(reviews || [])
   }, [reviews])
@@ -43,13 +43,13 @@ const Review = ({ reviews, placeId }) => {
       await Client.delete(`/places/${placeId}/reviews/${reviewId}`)
       setReviewList(reviewList.filter((review) => review._id !== reviewId))
     } catch (error) {
-      console.error("Failed to delete review:", error)
+      console.error('Failed to delete review:', error)
     }
   }
 
   return (
     <div className="reviewForm">
-      {userId && userType === "user" && (
+      {userId && userType === 'user' && (
         <div className="reviewInput">
           <form onSubmit={handleSubmit} className="rForm">
             <table>
@@ -98,6 +98,7 @@ const Review = ({ reviews, placeId }) => {
                   <tbody>
                     <tr>
                       <td>Name</td>
+                      <td>{review.user.username}</td>
                       <td>
                         {userId === review.user && (
                           <div
