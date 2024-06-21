@@ -255,32 +255,56 @@ button {
 .main-photo{
   display: flex;
   width: 600px;
-  height: 220px;
+  height: 182px;
+  margin-top: 15px;
   overflow-y: hidden;
   align-items: center;
   justify-content: center;
-  
+  border: 2px solid black;
   backdrop-filter: blur(10px);
-  animation: fadeIn 2s ease-in-out, backgroundChange 10s infinite;
+  scrollbar-width: none;
+  justify-content: end;
   
 }
 
-@keyframes backgroundChange {
-  0%,
-  100% {
-    background-color: rgb(174, 174, 174);
-  }
-  50% {
-    background-color: rgb(75, 75, 75);
-  }
-}
+
 
 .main-photo img{
   border: 2px solid black;
-  border-radius: 5px;
+
   margin: 5px;
   height: 180px;
   width: 200px;
+  position: relative;
+
+  animation: moveRight 9s linear infinite;
+}
+@keyframes moveRight {
+  0% {
+    left: 0;
+  }
+  50% {
+    left:465px
+  }
+
+  100% {
+    left:0px
+  }
+
+}
+
+
+
+/*=======booking card=======*/
+.Bookings{
+  width: 70%;
+}
+.booking-card{
+  width: 100%;
+  margin: 7px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.356);
 }
 
 /*
