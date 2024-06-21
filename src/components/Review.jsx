@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Client from '../services/api'
+import { Rating } from '@mui/material'
 
 const Review = ({ reviews, placeId }) => {
   const initialState = { reviewText: '', reviewRating: '', userId: '' }
@@ -22,13 +23,16 @@ const Review = ({ reviews, placeId }) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  const handleRatingChange = (event, newValue) => {
+    setFormValues({ ...formValues, reviewRating: newValue })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await Client.post(
       `/places/${placeId}/reviews/${userId}`,
       formValues
     )
-    console.log(formValues)
     setReviewList([...reviewList, response.data])
     setFormValues(initialState)
   }
@@ -41,6 +45,7 @@ const Review = ({ reviews, placeId }) => {
       console.error('Failed to delete review:', error)
     }
   }
+  const [value, setValue] = useState(2)
 
   return (
     <div className="reviewForm">
@@ -56,13 +61,11 @@ const Review = ({ reviews, placeId }) => {
                   value={formValues.review}
                   onChange={handleChange}
                 />
-                <label htmlFor="rate">Rating</label>
-                <input
-                  type="number"
-                  name="reviewRating"
-                  className="reviewRating"
-                  value={formValues.rate}
-                  onChange={handleChange}
+
+                <Rating
+                  name="simple-controlled"
+                  value={formValues.reviewRating}
+                  onChange={handleRatingChange}
                 />
                 <button type="submit" className="revButton">
                   Submit
@@ -77,7 +80,7 @@ const Review = ({ reviews, placeId }) => {
             {reviewList.map((review) => (
               <div key={review._id} className="showReview">
                 <p>Review: {review.review}</p>
-                <p>Rating: {review.reviewRating}</p>
+                <Rating name="read-only" value={review.reviewRating} readOnly />
                 {userId === review.user && (
                   <button onClick={() => handleDelete(review._id)}>
                     Delete
