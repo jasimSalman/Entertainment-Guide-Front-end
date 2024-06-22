@@ -1,18 +1,22 @@
-import "../App.css"
-import { useState, useEffect } from "react"
-import Client from "../services/api"
-import { useParams, useNavigate } from "react-router-dom"
+import '../App.css'
+import { useState, useEffect } from 'react'
+import Client from '../services/api'
+import { useParams, useNavigate } from 'react-router-dom'
 
 const EditPlace = () => {
   let navigate = useNavigate()
   const initialState = {
-    placeName: "",
-    placePoster: "",
-    placePrice: "",
-    placeDescription: "",
-    placeLocation: "",
+    placeName: '',
+    placePoster: '',
+    placePrice: '',
+    placeDescription: '',
+    placeLocation: '',
+    offDays: [],
+    timeStart: '',
+    timeEnd: ''
   }
   const [formValues, setFormValues] = useState(initialState)
+  console.log(formValues)
   const { placeId } = useParams()
 
   useEffect(() => {
@@ -26,9 +30,12 @@ const EditPlace = () => {
           placePrice: place.placePrice,
           placeDescription: place.placeDescription,
           placeLocation: place.placeLocation,
+          offDays: place.offDays,
+          timeStart: place.workingHours.start,
+          timeEnd: place.workingHours.end
         })
       } catch (error) {
-        console.error("Error fetching place details:", error)
+        console.error('Error fetching place details:', error)
       }
     }
     fetchPlaceDetails()
@@ -38,15 +45,33 @@ const EditPlace = () => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target
+    setFormValues((prevFormValues) => {
+      const updatedOffDays = checked
+        ? [...prevFormValues.offDays, value]
+        : prevFormValues.offDays.filter((day) => day !== value)
+      return { ...prevFormValues, offDays: updatedOffDays }
+    })
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await Client.put(`/places/${placeId}`, formValues)
+      const updatedPlace = {
+        ...formValues,
+        workingHours: {
+          start: formValues.timeStart,
+          end: formValues.timeEnd
+        }
+      }
+
+      await Client.put(`/places/${placeId}`, updatedPlace)
       setFormValues(initialState)
-      setFormValues(initialState)
-      navigate("/myplaces")
+      // setFormValues(initialState)
+      navigate('/myplaces')
     } catch (error) {
-      console.error("Error updating place:", error)
+      console.error('Error updating place:', error)
     }
   }
 
@@ -122,6 +147,61 @@ const EditPlace = () => {
             className="inputFeild"
           />
         </div>
+
+        <div className="input-wrapper">
+          <label className="label">Off Days</label>
+          <div className="checkbox-group">
+            {[
+              'Sunday',
+              'Monday',
+              'Tuesday',
+              'Wednesday',
+              'Thursday',
+              'Friday',
+              'Saturday'
+            ].map((day, index) => (
+              <label key={index} className="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="offDays"
+                  value={day}
+                  checked={formValues.offDays.includes(day)}
+                  onChange={handleCheckboxChange}
+                  className="inputFeild"
+                />
+                {day}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className="input-wrapper">
+          <label className="label">Working Hours</label>
+          <div className="time-group">
+            <div className="time-input">
+              <label>From:</label>
+              <input
+                type="time"
+                name="timeStart"
+                value={formValues.timeStart}
+                onChange={handleChange}
+                required
+                className="inputFeild"
+              />
+            </div>
+            <div className="time-input">
+              <label>To:</label>
+              <input
+                type="time"
+                name="timeEnd"
+                value={formValues.timeEnd}
+                onChange={handleChange}
+                required
+                className="inputFeild"
+              />
+            </div>
+          </div>
+        </div>
+
         <button
           disabled={
             !formValues.placeName ||
