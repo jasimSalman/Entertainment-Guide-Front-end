@@ -1,12 +1,9 @@
 import React, { useState } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
 import { BASE_URL } from "../services/api"
 
-function Search() {
+const Search = ({ setSearchResults, setSearchSubmitted }) => {
   const [placeName, setPlaceName] = useState("")
-  const [results, setResults] = useState([])
-  const [searchSubmitted, setSearchSubmitted] = useState(false)
 
   const handleSearch = async () => {
     try {
@@ -14,7 +11,7 @@ function Search() {
         const response = await axios.post(`${BASE_URL}/places/search`, {
           placeName: placeName,
         })
-        setResults(response.data)
+        setSearchResults(response.data)
         setSearchSubmitted(true)
         setPlaceName("")
       }
@@ -41,17 +38,6 @@ function Search() {
       <button onClick={handleSearch} className="searchButton">
         Search
       </button>
-      <div>
-        {searchSubmitted && results.length === 0 ? (
-          <p>No Place found.</p>
-        ) : (
-          <div className="serachResult">
-            {results.map((place) => (
-              <Link to={`/places/${place._id}`}>{place.placeName}</Link>
-            ))}
-          </div>
-        )}
-      </div>
     </div>
   )
 }

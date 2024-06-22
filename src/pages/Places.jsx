@@ -1,9 +1,9 @@
-import PlaceCard from '../components/PlaceCard'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import Search from '../components/Search'
-import { BASE_URL } from '../services/api'
+import PlaceCard from "../components/PlaceCard"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
+import Search from "../components/Search"
+import { BASE_URL } from "../services/api"
 
 const Places = () => {
   const [places, setPlaces] = useState([])
@@ -24,7 +24,6 @@ const Places = () => {
 
   return (
     <div className="mainCard">
-      <Search />
       {places.length > 0 ? (
         places.map((place) => (
           <PlaceCard
@@ -37,7 +36,6 @@ const Places = () => {
       ) : (
         <h4>No places in this category.</h4>
       )}
-
     </div>
   )
 }
