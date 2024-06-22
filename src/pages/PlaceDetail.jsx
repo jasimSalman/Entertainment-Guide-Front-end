@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import axios from "axios"
-import PlaceDetailsCard from "../components/PlaceDetailsCard"
-import FavList from "../components/FavList"
-import Review from "../components/Review"
-import { BASE_URL } from "../services/api"
-import Client from "../services/api"
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
+import PlaceDetailsCard from '../components/PlaceDetailsCard'
+import FavList from '../components/FavList'
+import Review from '../components/Review'
+import { BASE_URL } from '../services/api'
+import Client from '../services/api'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const PlaceDetails = () => {
   let navigate = useNavigate()
@@ -17,17 +17,17 @@ const PlaceDetails = () => {
   const [bookings, setBookings] = useState([])
   const [date, setDate] = useState(new Date())
 
-  const userId = localStorage.getItem("userId")
-  const userType = localStorage.getItem("userType")
+  const userId = localStorage.getItem('userId')
+  const userType = localStorage.getItem('userType')
   let { placeId } = useParams()
 
   //This function will return all the bookings of all the users.
   const allBookings = async () => {
     try {
-      const res = await Client.get("/book/all-bookings")
+      const res = await Client.get('/book/all-bookings')
       setBookings(res.data)
     } catch (e) {
-      console.error("Failed to fetch bookings:", e)
+      console.error('Failed to fetch bookings:', e)
     }
   }
 
@@ -41,7 +41,7 @@ const PlaceDetails = () => {
       })
       navigate(`/booking/${userId}`)
     } catch (e) {
-      console.error("Failed to create booking:", e)
+      console.error('Failed to create booking:', e)
     }
   }
 
@@ -51,7 +51,7 @@ const PlaceDetails = () => {
       const response = await axios.get(`${BASE_URL}/places/${placeId}`)
       setPlaceDetails(response.data)
     } catch (e) {
-      console.error("Failed to fetch place details:", e)
+      console.error('Failed to fetch place details:', e)
     }
   }
 
@@ -61,7 +61,7 @@ const PlaceDetails = () => {
       const res = await axios.get(`${BASE_URL}/places/${placeId}/reviews`)
       setReviews(res.data)
     } catch (e) {
-      console.error("Failed to fetch reviews:", e)
+      console.error('Failed to fetch reviews:', e)
     }
   }
 
@@ -140,7 +140,7 @@ const PlaceDetails = () => {
     <div>
       <div className="placeDetail">
         {userId
-          ? userType === "user" && (
+          ? userType === 'user' && (
               <div>
                 <FavList placeId={placeId} />
               </div>
@@ -157,27 +157,26 @@ const PlaceDetails = () => {
       </div>
 
       {userId
-        ? userType === "user" && (
+        ? userType === 'user' && (
             <div className="booking-container">
               <div className="booking">
-                 <DatePicker
-                showTimeSelect
-                minTime={new Date(0, 0, 0, 0, 0)}
-                maxTime={new Date(0, 0, 0, 23, 59)}
-                selected={date}
-                onChange={(date) => setDate(date)}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeIntervals={60}
-                excludeDates={getExcludedDates()}
-                filterDate={passedDays}
-                filterTime={filterTime}
+                <DatePicker
+                  showTimeSelect
+                  minTime={new Date(0, 0, 0, 0, 0)}
+                  maxTime={new Date(0, 0, 0, 23, 59)}
+                  selected={date}
+                  onChange={(date) => setDate(date)}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeIntervals={60}
+                  excludeDates={getExcludedDates()}
+                  filterDate={passedDays}
+                  filterTime={filterTime}
                   className="book"
                 />
                 <button onClick={handleBooking} className="bookButton">
                   Book
                 </button>
               </div>
-
             </div>
           )
         : null}
