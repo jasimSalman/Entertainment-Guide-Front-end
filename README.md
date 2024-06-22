@@ -1,4 +1,4 @@
-# Entertainment Guid
+# Yala Netlla
 
 ## Date: 10/6/2024
 
@@ -6,15 +6,15 @@
 
 #### [GitHub](https://github.com/jasimSalman) | [LinkedIn](https://www.linkedin.com/in/jasimsalman1/)
 
-#### [GitHub](https://github.com/m00hammed) | [LinkedIn](https://www.linkedin.com/in/<username>/)
+#### [GitHub](https://github.com/m00hammed) | [LinkedIn](https://www.linkedin.com/in/mohammed-saeed776/)
 
-#### [GitHub](https://github.com/zainabaltalaq) | [LinkedIn](https://www.linkedin.com/in/<username>/)
+#### [GitHub](https://github.com/zainabaltalaq) | [LinkedIn](http://www.linkedin.com/in/zainabaltalaq)
 
 ---
 
 ### **_Description_**
 
-#### "Entertainment Guide" is your ultimate resource for discovering entertainment venues in Bahrain. Our website offers a wide range of categories, from swimming pools to parks and beyond, allowing users to easily explore various options. Each listing includes detailed information about the venue, and for those venues that offer reservations, users can conveniently book their visit directly through our platform.
+#### "Yala Netlla" is your ultimate resource for discovering entertainment venues in Bahrain. Our website offers a wide range of categories, from swimming pools to parks and beyond, allowing users to easily explore various options. Each listing includes detailed information about the venue, and for those venues that offer reservations, users can conveniently book their visit directly through our platform.
 
 ---
 
@@ -33,7 +33,7 @@
 
 ##### A Trello board was used to keep track of development progress and can be viewed [here](https://trello.com/b/cavvFYqQ/project-3).
 
-##### The project was deployed and can be viewed [here](URL).
+##### The project was deployed and can be viewed [here](https://yala-netla.surge.sh/).
 
 ---
 
@@ -42,30 +42,26 @@
 ##### Wireframe
 
 ![Home page](images/Home.png)
-![categories](https://www3.0zz0.com/2024/06/10/21/619339446.jpg)
-![places](https://www12.0zz0.com/2024/06/10/21/534558985.jpg)
-![Place details](images/Page_details.png)
-![booking](https://www3.0zz0.com/2024/06/10/21/173564153.jpg)
-![AddPlace](https://www9.0zz0.com/2024/06/10/21/596363121.jpg)
+![Place details page](images/Page_details.png)
 ![Sign up page](images/signup.png)
 
-##### ERD Diagram
+##### ER Diagram
 
-![ERD](images/ERD.png)
+![ER](images/ERD.png)
 
-##### Component Hierarchy Diagrams
+##### Final Product
 
-![ER](https://www12.0zz0.com/2024/06/10/21/829610027.png)
+![Places Page](images/places.png)
+![Place Details Page](images/place%20details.png)
+![Bookings Page](images/bookings.png)
 
 ---
 
 ### **_Future Updates_**
 
 - [ ] Add more categories and features.
-- [ ] Add payment methods
-- [ ] Add Hotel reservations
-- [ ] Add Taxi reservations
-- [ ] Add More information about the tourist places
+- [x] Add a map showing the locations of the places.
+- [] Integrate AI into the website to provide recommendations based on the items in the favorites list.
 
 ---
 
@@ -74,5 +70,11 @@
 ##### github: [github](https://github.com/SEI-09-Bahrain/class_wiki?tab=readme-ov-file)
 
 ##### w3school: [w3school](https://www.w3schools.com/)
+
+##### Image Slider Library: [react-simple-image-slider](https://www.npmjs.com/package/react-simple-image-slider#style-customize)
+
+##### MUI Core: [Star Rating Component](https://mui.com/material-ui/react-rating/#basic-rating)
+
+##### Google Fonts: [Google Fonts](https://fonts.google.com/selection)
 
 ---
