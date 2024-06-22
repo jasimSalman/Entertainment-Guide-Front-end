@@ -3,12 +3,12 @@ const About = () => {
     <div className="about">
       <h1>Who are we?</h1>
       <p>
-        Lorem Ipsum is simply dummy text of theprinting and typesetting
-        industry. Lorem Ipsumhas been the industry's standard dummy textever
-        since the 1500s, when an unknown printertook a galley of type and
-        scrambled it to makea type specimen book. It has survived not onlyfive
-        centuries, but also the leap into electronictypesetting, remaining
-        essentially unchanged. Itwas popularised in the 1960s with the release
+        "يلا نطلع" is your ultimate resource for discovering entertainment
+        venues in Bahrain. Our website offers a wide range of categories, from
+        swimming pools to parks and beyond, allowing users to easily explore
+        various options. Each listing includes detailed information about the
+        venue, and for those venues that offer reservations, users can
+        conveniently book their visit directly through our platform.
       </p>
     </div>
   )
