@@ -36,7 +36,6 @@ a {
 }
 
 .logo {
-  /* background-color: rebeccapurple; */
   height: 100%;
   width: 17%;
   display: flex;
@@ -191,7 +190,7 @@ p {
 }
 
 .Card:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
   font-weight: bold;
 }
 
@@ -298,7 +297,7 @@ p {
   display: flex;
 }
 .bookingCard:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
   font-weight: bold;
 }
 .bookingTitle {
@@ -449,7 +448,7 @@ p {
 }
 
 .FavCard:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
   font-weight: bold;
 }
 
@@ -511,6 +510,7 @@ textarea {
   text-decoration: underline;
   margin-right: 10px;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 .label {
@@ -520,6 +520,14 @@ textarea {
   justify-content: center;
   font-size: 12px;
   text-align: center;
+}
+
+.signin-newaccount-container {
+  width: 85%;
+}
+
+.signin-newaccount-container h6:hover {
+  color: black;
 }
 
 /*=======OwnerPlaces=======*/
@@ -534,7 +542,7 @@ textarea {
   justify-content: space-between;
 }
 .PlaceCard:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
   font-weight: bold;
 }
 
@@ -550,7 +558,7 @@ textarea {
   border: 1px solid rgba(97, 92, 92, 0.372);
 }
 .ownerButton2:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
   font-weight: bold;
 }
 

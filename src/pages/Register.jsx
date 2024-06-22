@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { RegisterUser } from "../services/Auth"
-import { useNavigate } from "react-router-dom"
-import { useParams } from "react-router-dom"
+import { useState } from 'react'
+import { RegisterUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const Register = () => {
   let navigate = useNavigate()
@@ -9,25 +9,25 @@ const Register = () => {
   const { type } = useParams()
 
   const initValues = {
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    username: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
   }
 
   const [formValues, setFormValues] = useState(initValues)
-  const [password, setPassword] = useState("")
-  const [matchPassword, setMatchPassword] = useState("")
+  const [password, setPassword] = useState('')
+  const [matchPassword, setMatchPassword] = useState('')
   const [validPass, setValidPass] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormValues({ ...formValues, [name]: value })
-    if (name === "password") {
+    if (name === 'password') {
       setPassword(value)
-    } else if (name === "confirmPassword") {
+    } else if (name === 'confirmPassword') {
       setMatchPassword(value)
     }
   }
@@ -45,10 +45,10 @@ const Register = () => {
       lastName: formValues.lastName,
       email: formValues.email,
       password: formValues.password,
-      type: type,
+      type: type
     })
     setFormValues(initValues)
-    navigate("/signin")
+    navigate('/signin')
   }
 
   return (
@@ -62,7 +62,7 @@ const Register = () => {
             onChange={handleChange}
             name="username"
             type="text"
-            placeholder="John Smith"
+            placeholder="Username"
             value={formValues.username}
             required
             className="inputFeild"

@@ -1,12 +1,12 @@
-import { useState } from "react"
-import { SignInUser } from "../services/Auth"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { useState } from 'react'
+import { SignInUser } from '../services/Auth'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
 
-  const initialState = { username: "", password: "" }
+  const initialState = { username: '', password: '' }
   const [formValues, setFormValues] = useState(initialState)
 
   const handleChange = (e) => {
@@ -19,7 +19,7 @@ const SignIn = ({ setUser }) => {
     setFormValues(initialState)
     setUser(payload)
     {
-      payload.type === "user" ? navigate("/categories") : navigate("/myplaces")
+      payload.type === 'user' ? navigate('/categories') : navigate('/myplaces')
     }
   }
 
@@ -28,7 +28,7 @@ const SignIn = ({ setUser }) => {
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="username" className="label">
-            username
+            Username
           </label>
           <input
             onChange={handleChange}
@@ -61,11 +61,12 @@ const SignIn = ({ setUser }) => {
           SignIn
         </button>
       </form>
-      <div>
+      <div className="signin-newaccount-container">
         <div>
           <Link to="/updatePassword">
             <div className="font">Forget your password?</div>
           </Link>
+          <hr />
           <div className="font">Don't have an accout?</div>
           <div className="felxSignin">
             <Link to="/register/user">
