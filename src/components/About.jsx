@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 const About = () => {
   return (
     <div className="about">
@@ -10,6 +11,10 @@ const About = () => {
         venue, and for those venues that offer reservations, users can
         conveniently book their visit directly through our platform.
       </p>
+      <br />
+      <div className="cateButton">
+        <Link to={`/categories`}>Categories</Link>
+      </div>
     </div>
   )
 }
