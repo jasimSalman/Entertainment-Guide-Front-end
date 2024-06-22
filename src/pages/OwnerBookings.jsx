@@ -26,6 +26,7 @@ const OwnerBookings = () => {
             <BookingCard
               name={book.place.placeName}
               start={book.start}
+              poster={book.place.placePoster}
               end={book.end}
               key={book._id}
               id={book._id}
