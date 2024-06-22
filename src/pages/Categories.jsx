@@ -1,11 +1,13 @@
-import CategoryCard from '../components/CategoryCard'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import Search from '../components/Search'
-import { BASE_URL } from '../services/api'
+import React, { useEffect, useState } from "react"
+import axios from "axios"
+import { BASE_URL } from "../services/api"
+import CategoryCard from "../components/CategoryCard"
+import Search from "../components/Search"
 
 const Categories = () => {
   const [categories, setCategories] = useState([])
+  const [searchResults, setSearchResults] = useState([])
+  const [searchSubmitted, setSearchSubmitted] = useState(false)
 
   const getCategories = async () => {
     try {
@@ -22,16 +24,31 @@ const Categories = () => {
 
   return (
     <div>
-      <Search />
+      <Search
+        setSearchResults={setSearchResults}
+        setSearchSubmitted={setSearchSubmitted}
+      />
       <div className="mainCard">
-        {categories.map((Category) => (
-          <CategoryCard
-            key={Category._id}
-            id={Category._id}
-            name={Category.categoryName}
-            poster={Category.categoryPoster}
-          />
-        ))}
+        {searchSubmitted && searchResults.length > 0
+          ? searchResults.map((place) => (
+              <div key={place._id} className="searchResult">
+                <a href={`/places/${place._id}`}>
+                  <div className="Card">
+                    <div className="card-Cover" />
+                    <img src={place.placePoster} />
+                    <h3 className="card-title">{place.placeName}</h3>
+                  </div>
+                </a>
+              </div>
+            ))
+          : categories.map((Category) => (
+              <CategoryCard
+                key={Category._id}
+                id={Category._id}
+                name={Category.categoryName}
+                poster={Category.categoryPoster}
+              />
+            ))}
       </div>
     </div>
   )
